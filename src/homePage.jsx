@@ -3,7 +3,7 @@ import { IoMdSearch } from "react-icons/io";
 
 const Box = ({ message }) => {
   return <>
-    <div className="min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-xl">
+    <div className="min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-full hover:bg-opacity-60 transition-all backdrop-blur-sm">
       <div className="w-full p-1 font-medium text-white text-lg text-center">
         {message}
       </div>
@@ -15,7 +15,7 @@ const SearchBar = () => {
   return <>
     <div className="bg-slate-200 bg-opacity-20 rounded-full pr-5 pl-1 group">
       <div className="flex w-full align-middle min-w-fit gap-2 py-1">
-        <input className="w-full bg-transparent text-white text-lg rounded-full px-3
+        <input className="w-full bg-transparent text-white text-lg rounded-full px-3 transition-all
          group-hover:bg-gray-50 group-hover:bg-opacity-20 focus:bg-gray-50 focus:bg-opacity-20 outline-none"
          placeholder="ค้นหา"/>
         <button>
@@ -29,8 +29,9 @@ const SearchBar = () => {
 export const HomePage = () => {
   return (
     <div className="flex flex-row justify-center min-h-screen">
-      <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-no-repeat bg-cover justify-center gap-5">
-        <div className="my-8"></div>
+      <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')]  bg-no-repeat bg-cover justify-center gap-5">
+        
+        <div className="my-10"></div>
         <p className="text-white [text-shadow:0px_4px_4px_#00000040] font-bold text-4xl md:text-6xl lg:text-7xl text-center tracking-[0] leading-[normal]">
           สูตรคณิตคิดไม่ออก
         </p>
@@ -45,6 +46,10 @@ export const HomePage = () => {
           </div>
         </div>
 
+        <div className="w-full flex justify-center mb-1 mt-2">
+          <hr className="w-4/6 border-y-2 opacity-60"></hr>
+        </div>
+        
         <div className="flex w-full justify-center">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 w-4/6">
             <Box message="เซต" />
