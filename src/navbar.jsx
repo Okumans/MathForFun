@@ -75,7 +75,7 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between p-4 px-5">
                     <div className="w-full flex items-center divide-x-2 divide-opacity-40 divide-slate-200">
                         <a href='/'>
-                        <img className="h-14 object-cover" alt="Logo" src="src/assets/logo.png" />
+                        <img className="h-14 object-cover" alt="Logo" src="../src/assets/logo.png" />
                         </a>
                         <div className="ml-5">
                             <div className='ml-5'>
