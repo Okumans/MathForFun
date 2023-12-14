@@ -1,76 +1,5 @@
 import { useParams } from "react-router-dom";
-import Latex from "react-latex"
-import AnimateHeight from 'react-animate-height';
-import { useState } from "react";
-import { FaLock, FaUnlock } from "react-icons/fa";
-
-export const ContentBox = ({ topics, title, description, equation, definition }) => {
-  const [height, setHeight] = useState(false);
-  const [contentLock, setContentLock] = useState(false);
-
-
-  return <div className="flex w-full h-fit justify-center bg-white bg-opacity-30 rounded-lg shadow-md backdrop-blur-sm ">
-
-    <div className="flex flex-col p-3 w-full gap-2">
-      <button
-        className={"absolute w-fit top-4 right-4 bg-white rounded-full transition-all " + (contentLock ? "p-4 bg-opacity-50 -translate-y-1.5 translate-x-1" : "p-3 bg-opacity-20")}
-        onClick={() => setContentLock(!contentLock)}>
-        {contentLock ?
-          <FaUnlock width="10" height="10" fill="white" /> :
-          <FaLock width="10" height="10" fill="white" />
-        }
-      </button>
-
-      <button
-        className="w-full"
-        aria-expanded={height !== 0}
-        aria-controls="panel"
-        onClick={() => {
-          if (!contentLock) setHeight(height === 0 ? 'auto' : 0)
-        }}
-      >
-        <AnimateHeight
-          id="panel"
-          duration={500}
-          height={height}>
-
-          <div className="flex justify-between">
-            <div className="flex gap-2">
-              {topics.map((topic) =>
-                <p className="w-fit p-1 px-2 text-white text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md">{topic}</p>
-              )}
-            </div>
-          </div>
-
-        </AnimateHeight>
-        <p className="w-full pt-2 text-white text-4xl font-extrabold text-left">{title}</p>
-
-        <AnimateHeight
-          id="panel"
-          duration={500}
-          height={height}
-        >
-          <p className="pb-2 w-full text-left text-white text-lg font-medium pl-1">{description}</p>
-          <div className="flex gap-1">
-            <div className="p-4 min-w-fit text-white text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
-              <p className="w-full text-center font-sans"><Latex>{equation}</Latex></p>
-            </div>
-            <table className="gap-2">
-              {definition.map(([key, value]) =>
-                <tr className="w-">
-                  <td><p className="p-1 my-0.5  text-white text-lg font-medium text-center bg-white bg-opacity-30 rounded-lg shadow-md">{key}</p></td>
-                  <td><p className="p-1 text-white text-lg font-medium bg-opacity-30 text-left break-all">{value}</p></td>
-                </tr>
-              )}
-            </table>
-          </div>
-        </AnimateHeight>
-      </button>
-    </div>
-
-  </div>
-
-}
+import { ContentBox } from "./contentBox";
 
 export const PageContentTemplate = () => {
   const { topic } = useParams()
@@ -95,7 +24,7 @@ export const PageContentTemplate = () => {
         </div>
 
         <div className="flex w-full justify-center">
-          <div className="flex flex-col w-4/6 gap-2">
+          <div className="flex flex-col w-11/12 md:w-5/6 lg:w-4/6 gap-2">
             <ContentBox
               topics={["เซต", "เพาเวอร์เซต"]}
               title="จำนวนสมาชิกเพาเวอร์เซต์"
@@ -113,7 +42,8 @@ export const PageContentTemplate = () => {
               definition={[
                 ["A", "A เป็นเซตใดๆ"],
                 ["n(A)", "จำนวนสมาชิกเซต A"]
-              ]} />
+              ]}
+              image="https://cdn.britannica.com/11/69611-004-34D59B4A/trigonometry-formulas.jpg" />
           </div>
         </div>
 
