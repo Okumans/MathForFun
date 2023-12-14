@@ -7,6 +7,8 @@ const classNames = (...classes) => {
     return classes.filter(Boolean).join(' ')
 }
 
+// TODO: add link to each labeled page
+// TODO: add icon to each item ?optional
 
 const Item = ({ text, link }) => {
     return <Menu.Item>
