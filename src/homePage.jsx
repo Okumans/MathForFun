@@ -1,5 +1,8 @@
 import React from "react";
+import { useState } from "react";
 import { IoMdSearch } from "react-icons/io";
+import { Searcher } from "./contents/searcher";
+import { sampleContents } from "./contents/contents";
 
 const Box = ({ message }) => {
   return <>
@@ -12,12 +15,21 @@ const Box = ({ message }) => {
 }
 
 const SearchBar = () => {
+  const [searchText, setSearchText] = useState("");
+  const seacher = new Searcher(sampleContents)
+
+  const handleSearchEvent = (event) => {
+    setSearchText(event.target.value);
+    seacher.search(searchText)
+  }
+  
   return <>
     <div className="bg-slate-200 bg-opacity-20 rounded-full pr-5 pl-1 group">
       <div className="flex w-full align-middle min-w-fit gap-2 py-1">
-        <input className="w-full bg-transparent text-white text-lg rounded-full px-3 transition-all
-         group-hover:bg-gray-50 group-hover:bg-opacity-20 focus:bg-gray-50 focus:bg-opacity-20 outline-none"
-         placeholder="ค้นหา"/>
+        <input
+          className="w-full bg-transparent text-white text-lg rounded-full px-3 transition-all group-hover:bg-gray-50 group-hover:bg-opacity-20 focus:bg-gray-50 focus:bg-opacity-20 outline-none"
+          placeholder="ค้นหา"
+          onChange={handleSearchEvent} />
         <button>
           <IoMdSearch className="h-full w-6 fill-white" />
         </button>
@@ -30,7 +42,7 @@ export const HomePage = () => {
   return (
     <div className="flex flex-row justify-center min-h-screen">
       <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')]  bg-no-repeat bg-cover justify-center gap-5">
-        
+
         <div className="my-10"></div>
         <p className="text-white [text-shadow:0px_4px_4px_#00000040] font-bold text-4xl md:text-6xl lg:text-7xl text-center tracking-[0] leading-[normal]">
           สูตรคณิตคิดไม่ออก
@@ -49,7 +61,7 @@ export const HomePage = () => {
         <div className="w-full flex justify-center mb-1 mt-2">
           <hr className="w-4/6 border-y-2 opacity-60"></hr>
         </div>
-        
+
         <div className="flex w-full justify-center">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 w-4/6">
             <Box message="เซต" />

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ContentBox, SpecialText } from "./contentBox";
+import { sampleContents } from "./contents";
 
 export const PageContentTemplate = () => {
   const { topic } = useParams()
@@ -26,25 +27,7 @@ export const PageContentTemplate = () => {
 
         <div className="flex w-full justify-center">
           <div className="flex flex-col w-11/12 md:w-5/6 lg:w-4/6 gap-2">
-            <ContentBox
-              topics={["เซต", "เพาเวอร์เซต"]}
-              title="จำนวนสมาชิกเพาเวอร์เซต์"
-              description="A เป็นเซตใดๆ. พาวเวอร์เซต คือ เซตของสับเซตทั้งหมดของ A เพาเวอร์เซตของ A"
-              equation={SpecialText.fromString("$n(P(A)) = 2^{n(A)}$", true)}
-              definition={[
-                [SpecialText.fromString("$A$", true), "A เป็นเซตใดๆ"],
-                [SpecialText.fromString("$n(A)$", true), "จำนวนสมาชิกเซต A"]
-              ]} />
-            <ContentBox
-              topics={["เซต", "เพาเวอร์เซต"]}
-              title="จำนวนสมาชิกเพาเวอร์เซต์"
-              description="A เป็นเซตใดๆ. พาวเวอร์เซต คือ เซตของสับเซตทั้งหมดของ A เพาเวอร์เซตของ A"
-              table={[["name", "eqution"], [["number of powersest", SpecialText.fromString("$n(P(A)) = 2^{n(A)}$", true)]]]}
-              definition={[
-                ["A", "A เป็นเซตใดๆ"],
-                ["n(A)", "จำนวนสมาชิกเซต A"]
-              ]}
-              video="https://www.youtube.com/embed/ZRtdQ81jPUQ" />
+            {sampleContents.map((contentCreator) => contentCreator.content)}
           </div>
         </div>
 

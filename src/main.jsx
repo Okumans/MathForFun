@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import { HomePage } from './HomePage'
+import { HomePage } from './homePage'
 import { Navbar } from './navbar'
 import { PageContentTemplate } from './contents/pageContent'
 import './index.css'

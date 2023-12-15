@@ -60,14 +60,6 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
     const [height, setHeight] = useState(0);
     const [contentLock, setContentLock] = useState(false);
 
-    // change normal string to SpecialText if need **all text use below is all SpecialText for latex support 
-    if (topics) recursiveNestToSpecialText(topics);
-    if (table) recursiveNestToSpecialText(table);
-    if (definition) recursiveNestToSpecialText(definition)
-    title = toSpecialTextIfNotUndefined(title);
-    description = toSpecialTextIfNotUndefined(description);
-    equation = toSpecialTextIfNotUndefined(equation)
-
     return <div className="flex w-full h-fit justify-center bg-white bg-opacity-30 rounded-lg shadow-md backdrop-blur-sm ">
         <div className="flex flex-col p-3 w-full gap-2">
 
@@ -119,7 +111,7 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
 
                         {
                             image ?
-                                <div className={`flex w-full justify-center rounded-md bg-no-repeat bg-cover bg-center bg-[url('https://cdn.britannica.com/11/69611-004-34D59B4A/trigonometry-formulas.jpg')]`}>
+                                <div className={`flex w-full justify-center rounded-md bg-no-repeat bg-cover bg-center bg-white`} style={{ backgroundImage: `url('${image}')` }}>
                                     <div className="w-full h-full flex justify-center rounded-md backdrop-blur-xl">
                                         <img src={image} className="md:my-2 drop-shadow-md w-full md:w-1/2 lg:w-5/12"></img>
                                     </div>
@@ -135,23 +127,30 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
 
                         {/* table or equation */}
                         <div className="flex gap-1 flex-col md:flex-col lg:flex-row">
-                            <div className="p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
-                                {equation ?
+
+
+                            {equation ?
+                                <div className="p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
                                     <p className="w-full text-center font-sans">{equation.contentNoStyle}</p>
-                                    : table ?
+                                </div>
+                                : table ?
+                                    <div className="p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
                                         <TableGenerator info={table} />
-                                        : null}
-                            </div>
+                                    </div>
+                                    : null}
+
 
                             {/* definition */}
-                            <table className="gap-2 h-fit">
-                                {definition.map(([key, value]) =>
-                                    <tr>
-                                        <td><p className="p-1 my-0.5 text-white text-base md:text-lg font-medium text-center bg-white bg-opacity-30 rounded-lg shadow-md">{key.content}</p></td>
-                                        <td><p className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value.content}</p></td>
-                                    </tr>
-                                )}
-                            </table>
+                            {definition ?
+                                <table className="gap-2 h-fit">
+                                    {definition.map(([key, value]) =>
+                                        <tr>
+                                            <td><p className="p-1 my-0.5 text-white text-base md:text-lg font-medium text-center bg-white bg-opacity-30 rounded-lg shadow-md">{key.content}</p></td>
+                                            <td><p className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value.content}</p></td>
+                                        </tr>
+                                    )}
+                                </table>
+                                : null}
                         </div>
 
                     </div>
@@ -180,4 +179,68 @@ const TableGenerator = ({ info }) => {
                 </tr>)}
         </tbody>
     </table>
+}
+
+export class ContentBoxCreator {
+    constructor(
+        topics,
+        title,
+        description = undefined,
+        equation = undefined,
+        table = undefined,
+        definition = undefined,
+        image = undefined,
+        video = undefined
+    ) {
+        this.topics = topics;
+        this.title = title;
+        this.description = description;
+        this.equation = equation;
+        this.table = table;
+        this.definition = definition;
+        this.image = image;
+        this.video = video
+
+        // change normal string to SpecialText if need **all text use below is all SpecialText for latex support 
+        if (this.topics) recursiveNestToSpecialText(this.topics);
+        if (this.table) recursiveNestToSpecialText(this.table);
+        if (this.definition) recursiveNestToSpecialText(this.definition)
+        this.title = toSpecialTextIfNotUndefined(this.title);
+        this.description = toSpecialTextIfNotUndefined(this.description);
+        this.equation = toSpecialTextIfNotUndefined(this.equation)
+    }
+
+    get content() {
+        return <ContentBox
+            topics={this.topics}
+            title={this.title}
+            description={this.description}
+            equation={this.equation}
+            table={this.table}
+            definition={this.definition}
+            image={this.image}
+            video={this.video}
+        />
+    }
+
+    static fromObject(dict) {
+        const { topics,
+            title,
+            description,
+            equation,
+            table,
+            definition,
+            image,
+            video } = dict
+            
+        return new ContentBoxCreator(
+            topics,
+            title,
+            description,
+            equation,
+            table,
+            definition,
+            image,
+            video)
+    }
 }
