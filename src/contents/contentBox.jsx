@@ -119,7 +119,7 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
                                 : video ?
                                     <div className={`flex w-full justify-center rounded-md bg-no-repeat bg-cover bg-center bg-black`}>
                                         <div className="w-full h-full flex justify-center rounded-md backdrop-blur-xl">
-                                            <iframe className="md:my-2 drop-shadow-md w-full md:w-1/2 lg:w-5/12" src={video} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                                            <iframe className="md:my-2 drop-shadow-md h-56 w-full md:w-1/2 lg:w-5/12" src={video} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                                         </div>
                                     </div>
                                     : null
@@ -130,11 +130,11 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
 
 
                             {equation ?
-                                <div className="p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
+                                <div className="p-4 flex items-center min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
                                     <p className="w-full text-center font-sans">{equation.contentNoStyle}</p>
                                 </div>
                                 : table ?
-                                    <div className="p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
+                                    <div className="p-2 md:p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
                                         <TableGenerator info={table} />
                                     </div>
                                     : null}
@@ -174,8 +174,8 @@ const TableGenerator = ({ info }) => {
 
         <tbody>
             {contents.map((row, index) =>
-                <tr key={index} className="border-2 border-white border-solid">{row.map((col) =>
-                    <td key={col.rawContent} className="border-2 text-xl border-white border-solid p-2 px-3">
+                <tr key={index} className="border-2 break-all border-white border-solid">{row.map((col) =>
+                    <td key={col.rawContent} className="border-2 py-3 text-sm sm:text-lg md:text-xl lg:text-2xl border-white border-solid px-3">
                         {col.content}
                     </td>)}
                 </tr>)}

@@ -21,10 +21,11 @@ export const SearchPage = () => {
     };
 
     const animation = {
-        initial: { scale: .5, opacity: 0 },
-        animate: { scale: 1, opacity: 1 },
+        initial: { scale: 0, opacity: 0, y: 50 },
+        animate: { scale: 1, opacity: 1, y: 0 },
         exit: { scale: 0, opacity: 0 },
-        transition: { type: "spring", stiffness: 900, damping: 100 }
+        transition: { type: "spring", stiffness: 900, damping: 40 },
+        mass: 2
     };
 
     return (
