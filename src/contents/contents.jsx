@@ -13,7 +13,7 @@ export const sampleContents = [
     }),
     ContentBoxCreator.fromObject({
         topics: ["เซต", "เพาเวอร์เซต"],
-        title: "จำนวนสมาชิกเพาเวอร์เซต์",
+        title: "จำนวนสมาชิกเพาเวอร์เซต์อีกอัน",
         description: "A เป็นเซตใดๆ. พาวเวอร์เซต คือ เซตของสับเซตทั้งหมดของ A เพาเวอร์เซตของ A",
         table: [
             [SpecialText.fromString("name", false), "eqution"], 

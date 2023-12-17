@@ -90,7 +90,7 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
                     <div className="flex justify-between">
                         <div className="flex gap-2">
                             {topics.map((topic) =>
-                                <p className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md">{topic.contentNoStyle}</p>
+                                <p key={topic.rawContent} className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md">{topic.contentNoStyle}</p>
                             )}
                         </div>
                     </div>
@@ -119,7 +119,7 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
                                 : video ?
                                     <div className={`flex w-full justify-center rounded-md bg-no-repeat bg-cover bg-center bg-black`}>
                                         <div className="w-full h-full flex justify-center rounded-md backdrop-blur-xl">
-                                            <iframe className="md:my-2 drop-shadow-md w-full md:w-1/2 lg:w-5/12" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullscreen></iframe>
+                                            <iframe className="md:my-2 drop-shadow-md w-full md:w-1/2 lg:w-5/12" src={video} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                                         </div>
                                     </div>
                                     : null
@@ -144,10 +144,12 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
                             {definition ?
                                 <table className="gap-2 h-fit">
                                     {definition.map(([key, value]) =>
-                                        <tr>
-                                            <td><p className="p-1 my-0.5 text-white text-base md:text-lg font-medium text-center bg-white bg-opacity-30 rounded-lg shadow-md">{key.content}</p></td>
-                                            <td><p className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value.content}</p></td>
-                                        </tr>
+                                        <tbody key={key.rawContent + value.rawContent}>
+                                            <tr>
+                                                <td><div className="p-1 my-0.5 text-white text-base md:text-lg font-medium text-center bg-white bg-opacity-30 rounded-lg shadow-md">{key.content}</div></td>
+                                                <td><div className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value.content}</div></td>
+                                            </tr>
+                                        </tbody>
                                     )}
                                 </table>
                                 : null}
@@ -166,14 +168,14 @@ const TableGenerator = ({ info }) => {
     return <table className="border-2 border-white border-solid w-full ">
         <thead>
             <tr>
-                {headers.map((header) => <th className="border-2 bg-white bg-opacity-20 border-white border-solid p-2">{header.content}</th>)}
+                {headers.map((header) => <th key={header.rawContent} className="border-2 bg-white bg-opacity-20 border-white border-solid p-2">{header.content}</th>)}
             </tr>
         </thead>
 
         <tbody>
-            {contents.map((row) =>
-                <tr className="border-2 border-white border-solid">{row.map((col) =>
-                    <td className="border-2 text-xl border-white border-solid p-2 px-3">
+            {contents.map((row, index) =>
+                <tr key={index} className="border-2 border-white border-solid">{row.map((col) =>
+                    <td key={col.rawContent} className="border-2 text-xl border-white border-solid p-2 px-3">
                         {col.content}
                     </td>)}
                 </tr>)}
@@ -223,6 +225,20 @@ export class ContentBoxCreator {
         />
     }
 
+    contentWithKey(key) {
+        return <ContentBox
+            key={key}
+            topics={this.topics}
+            title={this.title}
+            description={this.description}
+            equation={this.equation}
+            table={this.table}
+            definition={this.definition}
+            image={this.image}
+            video={this.video}
+        />
+    }
+
     static fromObject(dict) {
         const { topics,
             title,
@@ -232,7 +248,7 @@ export class ContentBoxCreator {
             definition,
             image,
             video } = dict
-            
+
         return new ContentBoxCreator(
             topics,
             title,

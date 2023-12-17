@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import { HomePage } from './homePage'
 import { Navbar } from './navbar'
 import { PageContentTemplate } from './contents/pageContent'
+import { SearchPage } from './searchPage'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -19,6 +20,13 @@ const router = createBrowserRouter([
     element: <>
     <Navbar/>
     <PageContentTemplate/>
+    </>
+  },
+  {
+    path: "/search",
+    element: <>
+    <Navbar/>
+    <SearchPage/>
     </>
   }
 ])
