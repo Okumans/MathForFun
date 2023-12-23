@@ -21,7 +21,17 @@ export class SpecialText {
     }
 
     get content() {
-        return <p className={this.classes}>{this.isLatex ? <Latex>{this.rawContent}</Latex> : this.rawContent} </p>
+        return <div className="flex gap-1 flex-wrap">
+            {this.rawContent.split(/(\$.*?\$)/).map((textElement) => {
+                if (textElement.startsWith("$") && textElement.endsWith("$")) {
+                    return <p className={this.classes + " font-sans"}>{this.isLatex ? <Latex>{textElement}</Latex> : textElement} </p>
+                }
+                else {
+                    return <p className={this.classes}> {textElement} </p>
+                }
+            })
+            }
+        </div>
     }
 
     get contentNoStyle() {

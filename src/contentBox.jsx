@@ -45,17 +45,19 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
                 </AnimateHeight>
 
                 {/* title */}
-                <p className="w-full pt-2 text-white text-2xl md:text-4xl font-extrabold text-left">{title.contentNoStyle}</p>
+                <div className="w-full pt-2 text-white text-2xl md:text-4xl font-extrabold text-left">{title.content}</div>
 
                 <AnimateHeight
                     id="panel"
                     duration={500}
                     height={height}
                 >
-                    {/* image or video */}
                     <div className="flex flex-col gap-2">
-                        <p className="pb-2 w-full text-left text-white text-base md:text-lg font-medium pl-1">{description.contentNoStyle}</p>
 
+                        {/* description */}
+                        <div className="pb-2 w-full text-left text-white text-base md:text-lg font-medium pl-1">{description.content}</div>
+
+                        {/* image or video */}
                         {
                             image ?
                                 <div className={`flex w-full justify-center rounded-md bg-no-repeat bg-cover bg-center bg-white`} style={{ backgroundImage: `url('${image}')` }}>
@@ -78,7 +80,7 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
 
                             {equation ?
                                 <div className="p-4 flex items-center min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
-                                    <p className="w-full text-center font-sans">{equation.contentNoStyle}</p>
+                                    <div className="w-full text-center">{equation.contentNoStyle}</div>
                                 </div>
                                 : table ?
                                     <div className="p-2 md:p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
@@ -93,7 +95,7 @@ export const ContentBox = ({ topics, title, description, equation, table, defini
                                     {definition.map(([key, value]) =>
                                         <tbody key={key.rawContent + value.rawContent}>
                                             <tr>
-                                                <td><div className="p-1 my-0.5 text-white text-base md:text-lg font-medium text-center bg-white bg-opacity-30 rounded-lg shadow-md">{key.content}</div></td>
+                                                <td><div className="p-1 my-0.5 flex text-white text-base md:text-lg font-medium bg-white bg-opacity-30 rounded-lg shadow-md justify-center">{key.content}</div></td>
                                                 <td><div className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value.content}</div></td>
                                             </tr>
                                         </tbody>
@@ -130,6 +132,7 @@ const TableGenerator = ({ info }) => {
     </table>
 }
 
+// TODO: add key word field
 export class ContentBoxCreator {
     constructor(
         topics,
