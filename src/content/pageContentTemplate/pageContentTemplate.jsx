@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { ContentBox, SpecialText } from "./contentBox";
 import { sampleContents } from "./contents";
 
 export const PageContentTemplate = () => {

@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { Searcher } from "./contents/searcher";
-import { sampleContents } from "./contents/contents";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { Searcher } from "./searcher";
+import { mergedContent } from "./content/mergedContents";
+import { AnimatePresence, motion } from "framer-motion";
 import { removeDuplicateFilter } from "./utility";
 
 
 export const SearchPage = () => {
     const [searchResult, setSearchResult] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const searcher = useRef(new Searcher(sampleContents)).current;
+    const searcher = useRef(new Searcher(mergedContent)).current;
 
     const handleSearchEvent = (event) => {
         const searchTerm = event.target.value;
@@ -20,17 +20,40 @@ export const SearchPage = () => {
                 value.parent))
     };
 
-    const animation = {
-        initial: { scale: 0, opacity: 0, y: 50 },
-        animate: { scale: 1, opacity: 1, y: 0 },
-        exit: { scale: 0, opacity: 0 },
-        transition: { type: "spring", stiffness: 900, damping: 40 },
-        mass: 2
-    };
+    const boxAnimation = {
+        hidden: { scale: 0, opacity: 0, y: 50 },
+        show: {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 500,
+                damping: 40
+            }
+        },
+        exit: {
+            scale: 0,
+            opacity: 0,
+        }
+    }
 
+    const containerAnimationBoxs = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.08
+            }
+        },
+        exit: {
+            scale: 0,
+            opacity: 0,
+        }
+    }
     return (
         <div className="flex flex-row justify-center min-h-screen">
-            <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover justify-center gap-5">
+            <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5 ">
                 <div className="my-10 md:my-16"></div>
                 <div className="flex flex-col w-full items-center">
                     <div className="w-full flex flex-col justify-center">
@@ -61,11 +84,26 @@ export const SearchPage = () => {
 
                     <div className="flex flex-col w-11/12 md:w-5/6 lg:w-4/6 gap-2">
                         <AnimatePresence layout mode={"popLayout"}>
-                            {searchResult.map((creator) => (
-                                <motion.div key={creator.title} layout {...animation}>
-                                    {creator.content}
+                            {searchResult.length == 0 ?
+                                <motion.div key="None" layout variants={boxAnimation} initial="hidden" animate="show" exit="exit">
+                                    <div className="w-full flex justify-center">
+                                        <p className="p-3 text-center text-white font-semibold bg-white bg-opacity-20 backdrop-blur-sm w-fit rounded-md">ไม่มีผลการค้นหา 🤔</p>
+                                    </div>
                                 </motion.div>
-                            ))}
+                                :
+                                <motion.div
+                                    className="w-full flex flex-col gap-2"
+                                    variants={containerAnimationBoxs}
+                                    animate="show"
+                                    initial="hidden"
+                                    exit="exit">
+                                    {searchResult.map((creator) => (
+                                        <motion.div key={creator.title} layout variants={boxAnimation}>
+                                            {creator.content}
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                            }
                         </AnimatePresence>
                     </div>
                 </div>

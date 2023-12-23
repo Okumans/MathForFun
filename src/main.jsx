@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import { HomePage } from './homePage'
 import { Navbar } from './navbar'
-import { PageContentTemplate } from './contents/pageContent'
+import { PageContentTemplate } from './content/pageContentTemplate/pageContentTemplate'
 import { SearchPage } from './searchPage'
 import './index.css'
 

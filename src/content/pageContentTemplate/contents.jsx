@@ -1,4 +1,5 @@
-import { ContentBoxCreator, SpecialText } from "./contentBox"
+import { ContentBoxCreator } from "../../contentBox"
+import { SpecialText } from "../../specialText"
 
 export const sampleContents = [
     ContentBoxCreator.fromObject({

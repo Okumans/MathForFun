@@ -1,8 +1,7 @@
-import { ContentBox, ContentBoxCreator, SpecialText } from "./contentBox";
-import { sampleContents } from "./contents";
 import fuzzysort from 'fuzzysort'
 
 
+// TODO: make search support searching content by > 1 key, more match score more.
 export class Searcher {
   constructor(rawContents) {
     this.rawContents = rawContents;

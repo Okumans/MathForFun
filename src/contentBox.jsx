@@ -1,60 +1,7 @@
-import Latex from "react-latex"
 import AnimateHeight from 'react-animate-height';
 import { useState } from "react";
 import { FaLock, FaUnlock } from "react-icons/fa";
-
-//TODO: make tag usable
-
-// required:
-//     - topics: [string / SpecialText]
-//     - title: [string / SpecialText]
-
-// optional:
-//     - description: string / SpecialText
-//     - equation: SpecialText / table: [[SpecialText, ...], [[SpecialText, ...], ...]]
-//     - definition: [[SpecialText, SpecialText], ...]
-//     - image: string-url / video: string-url (must be https://www.youtube.com/embed/)
-
-export class SpecialText {
-    constructor(content, isLatex = false, classes = "") {
-        this.rawContent = content;
-        this.isLatex = isLatex;
-        this.classes = classes;
-    }
-
-    get content() {
-        return <p className={this.classes}>{this.isLatex ? <Latex>{this.rawContent}</Latex> : this.rawContent} </p>
-    }
-
-    get contentNoStyle() {
-        return this.isLatex ? <Latex>{this.rawContent}</Latex> : this.rawContent;
-    }
-
-    static fromString(str, isLatex = false, style = "") {
-        return new SpecialText(str, isLatex, style);
-    }
-}
-
-const toSpecialTextIfNotUndefined = (text) => {
-    switch (typeof text) {
-        case 'string':
-            return SpecialText.fromString(text);
-        case SpecialText:
-            return text;
-        default:
-            return text;
-    }
-}
-
-const recursiveNestToSpecialText = (arr) => {
-    arr.forEach((element, index, array) => {
-        if (Array.isArray(element)) {
-            recursiveNestToSpecialText(element);
-        } else {
-            array[index] = toSpecialTextIfNotUndefined(element);
-        }
-    });
-}
+import { SpecialText } from './specialText';
 
 export const ContentBox = ({ topics, title, description, equation, table, definition, image, video }) => {
     const [height, setHeight] = useState(0);
@@ -204,12 +151,12 @@ export class ContentBoxCreator {
         this.video = video
 
         // change normal string to SpecialText if need **all text use below is all SpecialText for latex support 
-        if (this.topics) recursiveNestToSpecialText(this.topics);
-        if (this.table) recursiveNestToSpecialText(this.table);
-        if (this.definition) recursiveNestToSpecialText(this.definition)
-        this.title = toSpecialTextIfNotUndefined(this.title);
-        this.description = toSpecialTextIfNotUndefined(this.description);
-        this.equation = toSpecialTextIfNotUndefined(this.equation)
+        if (this.topics) SpecialText.recursiveNestToSpecialText(this.topics);
+        if (this.table) SpecialText.recursiveNestToSpecialText(this.table);
+        if (this.definition) SpecialText.recursiveNestToSpecialText(this.definition)
+        this.title = SpecialText.toSpecialTextIfNotUndefined(this.title);
+        this.description = SpecialText.toSpecialTextIfNotUndefined(this.description);
+        this.equation = SpecialText.toSpecialTextIfNotUndefined(this.equation)
     }
 
     get content() {
