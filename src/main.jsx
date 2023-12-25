@@ -5,6 +5,7 @@ import { HomePage } from './homePage'
 import { Navbar } from './navbar'
 import { PageContentTemplate } from './content/pageContentTemplate/pageContentTemplate'
 import { SearchPage } from './searchPage'
+import { ReferencePage } from './referencePage'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -27,6 +28,13 @@ const router = createBrowserRouter([
     element: <>
     <Navbar/>
     <SearchPage/>
+    </>
+  },
+  {
+    path: "/reference",
+    element: <>
+    <Navbar/>
+    <ReferencePage/>
     </>
   }
 ])
