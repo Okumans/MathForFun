@@ -2,7 +2,7 @@ export const ReferencePage = () => {
   return (
     <div className="flex flex-row justify-center min-h-screen" >
       <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-3 ">
-        <div className="my-10 md:my-16"></div>
+        <div className="my-10 md:my-16"/>
 
         <div className="flex shadow-md">
 

@@ -21,7 +21,7 @@ export class Searcher {
           }
         }
       }))
-    return results.flat(1).sort((value) => value.score)
+    return results.flat(1).sort((value) => value.score).reverse();
   }
 
   createMappingTable(Contents=this.rawContents) {
