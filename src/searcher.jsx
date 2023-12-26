@@ -21,23 +21,34 @@ export class Searcher {
           }
         }
       }))
-    return results.flat(1).sort((value) => value.score)
+    return results.flat(1).sort((value) => value.score).reverse();
   }
 
-  createMappingTable() {
-    return Object.fromEntries(this.rawContents.map((Content) => [Content.title.rawContent, Content]))
+  createMappingTable(Contents=this.rawContents) {
+    return Object.fromEntries(Contents.map((Content) => [Content.title.rawContent, Content]))
   }
 
-  getSearchableContent() {
-    return Object.fromEntries(this.rawContents.map((Content) => [Content.title.rawContent, [
+  getSearchableContent(Contents=this.rawContents) {
+    return Object.fromEntries(Contents.map((Content) => [Content.title.rawContent, [
       Content.title?.rawContent,
       Content.description?.rawContent,
       Content.equation?.rawContent,
-      ...(Content.topics?.flat(Infinity) || []).map((content) => content.rawContent),
+      ...(Content.references?.flat(Infinity) || []).map((content) => content.rawContent),
       ...(Content.table?.flat(Infinity) || []).map((content) => content.rawContent),
       ...(Content.definition?.flat(Infinity) || []).map((content) => content.rawContent),
     ]]));
   }
 
-
+  getTagTable(Contents=this.rawContents) {
+    console.log(Contents)
+    const tags = {};
+    Contents.forEach(Content => {
+      Content.references.map((ref) => {        
+        tags[ref.rawContent] = tags[ref.rawContent] || [];
+        tags[ref.rawContent].push(Content);
+      })
+    });
+    return tags;
+  }
 }
+

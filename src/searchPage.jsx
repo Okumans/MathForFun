@@ -1,23 +1,30 @@
 import React, { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { Searcher } from "./searcher";
-import { mergedContent } from "./content/mergedContents";
+import { mergedContent, topics } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
 import { removeDuplicateFilter } from "./utility";
 
 
 export const SearchPage = () => {
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchContentResult, setSearchContentResult] = useState([]);
+    const [searchTopicResult, setSearchTopicResult] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const searcher = useRef(new Searcher(mergedContent)).current;
+    const contentSearcher = useRef(new Searcher(mergedContent)).current;
+    const topicSearcher = useRef(new Searcher(topics)).current;
 
     const handleSearchEvent = (event) => {
         const searchTerm = event.target.value;
-        setSearchText(searchTerm);
-        const results = searcher.search(searchTerm);
-        setSearchResult(removeDuplicateFilter(results, (value) =>
+        const contentResults = contentSearcher.search(searchTerm);
+        const topicResults = topicSearcher.search(searchTerm);
+
+        setSearchText(event.target.value);
+        setSearchContentResult(removeDuplicateFilter(contentResults, (value) =>
             value.parent.title).map((value) =>
-                value.parent))
+                value.parent));
+        setSearchTopicResult(removeDuplicateFilter(topicResults, (value) =>
+            value.parent.title).map((value) =>
+                value.parent));
     };
 
     const boxAnimation = {
@@ -30,6 +37,24 @@ export const SearchPage = () => {
                 type: "spring",
                 stiffness: 500,
                 damping: 40
+            }
+        },
+        exit: {
+            scale: 0,
+            opacity: 0,
+        }
+    }
+
+    const itemAnimation = {
+        hidden: { scale: 0, opacity: 0, y: 50 },
+        show: {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 350,
+                damping: 25
             }
         },
         exit: {
@@ -51,10 +76,21 @@ export const SearchPage = () => {
             opacity: 0,
         }
     }
+
+    const containerAnimationItems = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.03
+            }
+        }
+    }
+
     return (
         <div className="flex flex-row justify-center min-h-screen">
             <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5 ">
-                <div className="my-10 md:my-16"></div>
+                <div className="my-10 md:my-16"/>
                 <div className="flex flex-col w-full items-center">
                     <div className="w-full flex flex-col justify-center">
                         <p className="text-white [text-shadow:0px_4px_4px_#00000040] font-bold text-4xl md:text-6xl lg:text-7xl text-center tracking-[0] leading-[normal]">
@@ -83,8 +119,28 @@ export const SearchPage = () => {
                     </div>
 
                     <div className="flex flex-col w-11/12 md:w-5/6 lg:w-4/6 gap-2">
+
                         <AnimatePresence layout mode={"popLayout"}>
-                            {searchResult.length == 0 ?
+                            {searchTopicResult.length == 0 ?
+                                <div/> // need to be here don't know why
+                                :
+                                <motion.div className="flex flex-wrap gap-x-3 gap-y-2 w-full"
+                                    variants={containerAnimationItems}
+                                    animate="show"
+                                    initial="hidden"
+                                    exit="exit">
+                                    {searchTopicResult.map((topic) =>
+                                        <motion.div key={topic.title} layout variants={itemAnimation}>
+                                            <div className="min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-lg hover:bg-opacity-60 transition-all backdrop-blur-sm">
+                                                <div className="w-full py-2 px-3 font-medium text-white text-lg text-center">
+                                                    {topic.title}
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+                            }
+                            {searchContentResult.length == 0 ?
                                 <motion.div key="None" layout variants={boxAnimation} initial="hidden" animate="show" exit="exit">
                                     <div className="w-full flex justify-center">
                                         <p className="p-3 text-center text-white font-semibold bg-white bg-opacity-20 backdrop-blur-sm w-fit rounded-md">ไม่มีผลการค้นหา 🤔</p>
@@ -97,7 +153,7 @@ export const SearchPage = () => {
                                     animate="show"
                                     initial="hidden"
                                     exit="exit">
-                                    {searchResult.map((creator) => (
+                                    {searchContentResult.map((creator) => (
                                         <motion.div key={creator.title} layout variants={boxAnimation}>
                                             {creator.content}
                                         </motion.div>

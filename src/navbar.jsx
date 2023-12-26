@@ -86,7 +86,7 @@ export const Navbar = () => {
                         </div>
                     </div>
                     {/* <img className="w-[11px] h-[10px] top-[36px] left-[222px]" alt="Polygon" src="polygon-1.svg" /> */}
-                    <a className="right-10 opacity-70 font-medium text-white text-base md:text-lg" href='/'>
+                    <a className="right-10 opacity-70 font-medium text-white text-base md:text-lg" href='/reference'>
                         อ้างอิง
                     </a>
                 </div>
