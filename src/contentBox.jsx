@@ -37,7 +37,11 @@ export const ContentBox = ({ references, title, description, equation, table, de
                     <div className="flex justify-between">
                         <div className="flex gap-2">
                             {references.map((reference) =>
-                                <p key={reference.rawContent} className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md">{reference.contentNoStyle}</p>
+                                <button
+                                    key={reference.rawContent}
+                                    className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md hover:scale-105 hover:bg-opacity-40 transition ease-in-out"
+                                    onClick={(event) => event.stopPropagation()}
+                                    >{reference.contentNoStyle}</button>
                             )}
                         </div>
                     </div>
@@ -84,7 +88,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                 </div>
                                 : table ?
                                     <div className="p-2 md:p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
-                                        <TableGenerator info={table}/>
+                                        <TableGenerator info={table} />
                                     </div>
                                     : null}
 
@@ -133,6 +137,20 @@ const TableGenerator = ({ info }) => {
         </tbody>
     </table>
 }
+
+
+//TODO: make tag usable
+
+// required:
+//     - topics: [string / SpecialText]
+//     - title: [string / SpecialText]
+
+// optional:
+//     - description: string / SpecialText
+//     - equation: SpecialText / table: [[SpecialText, ...], [[SpecialText, ...], ...]]
+//     - definition: [[SpecialText, SpecialText], ...]
+//     - image: string-url / video: string-url (must be https://www.youtube.com/embed/)
+//     - keywords: [string]
 
 export class ContentBoxCreator {
     constructor(

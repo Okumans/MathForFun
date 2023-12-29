@@ -1,18 +1,6 @@
 
 import Latex from "react-latex"
 
-//TODO: make tag usable
-
-// required:
-//     - topics: [string / SpecialText]
-//     - title: [string / SpecialText]
-
-// optional:
-//     - description: string / SpecialText
-//     - equation: SpecialText / table: [[SpecialText, ...], [[SpecialText, ...], ...]]
-//     - definition: [[SpecialText, SpecialText], ...]
-//     - image: string-url / video: string-url (must be https://www.youtube.com/embed/)
-
 export class SpecialText {
     constructor(content, isLatex = false, classes = "") {
         this.rawContent = content;

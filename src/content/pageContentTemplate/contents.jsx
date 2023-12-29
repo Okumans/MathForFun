@@ -112,7 +112,8 @@ export const sampleContents = [
         equation: SpecialText.fromString("$V$ เป็นกลุ่มที่ประสานกันระหว่างการบวกและการคูณด้วยสเกลาร์", true),
         definition: [
             [SpecialText.fromString("$V$", true), "พื้นที่เวกเตอร์"]
-        ]
+        ],
+        keywords: ["vector", "vector area"]
     }),
     ContentBoxCreator.fromObject({
         references: ["กลุ่ม", "ผลคูณ"],
