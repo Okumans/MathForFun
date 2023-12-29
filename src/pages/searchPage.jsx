@@ -1,10 +1,8 @@
 import React, { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { Searcher } from "./searcher";
+import { Searcher } from "../searcher";
 import { mergedContent, topics } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
-import { removeDuplicateFilter } from "./utility";
-
 
 export const SearchPage = () => {
     const [searchContentResult, setSearchContentResult] = useState([]);
@@ -85,7 +83,7 @@ export const SearchPage = () => {
 
     return (
         <div className="flex flex-row justify-center min-h-screen">
-            <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5 ">
+            <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5 ">
                 <div className="my-10 md:my-16"/>
                 <div className="flex flex-col w-full items-center">
                     <div className="w-full flex flex-col justify-center">

@@ -2,10 +2,12 @@ import AnimateHeight from 'react-animate-height';
 import { useState } from "react";
 import { FaLock, FaUnlock } from "react-icons/fa";
 import { SpecialText } from './specialText';
+import { useNavigate } from 'react-router-dom';
 
 export const ContentBox = ({ references, title, description, equation, table, definition, image, video }) => {
     const [height, setHeight] = useState(0);
     const [contentLock, setContentLock] = useState(false);
+    const navigate = useNavigate();
 
     return <div className="flex w-full h-fit justify-center bg-white bg-opacity-30 rounded-lg shadow-md backdrop-blur-sm ">
         <div className="flex flex-col p-3 w-full gap-2">
@@ -40,7 +42,11 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                 <button
                                     key={reference.rawContent}
                                     className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md hover:scale-105 hover:bg-opacity-40 transition ease-in-out"
-                                    onClick={(event) => event.stopPropagation()}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        navigate("/tags/"+reference.rawContent);
+                                        
+                                    }}
                                     >{reference.contentNoStyle}</button>
                             )}
                         </div>

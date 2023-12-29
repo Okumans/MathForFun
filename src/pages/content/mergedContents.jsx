@@ -1,6 +1,6 @@
 import { sampleContents } from "./pageContentTemplate/contents";
-import { Searcher } from "../searcher";
-import { TopicBoxCreator } from "../topicBox";
+import { Searcher } from "../../searcher";
+import { TopicBoxCreator } from "../../topicBox";
 
 
 const searcher = new Searcher([...sampleContents]);
