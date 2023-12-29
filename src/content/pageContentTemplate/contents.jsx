@@ -10,7 +10,8 @@ export const sampleContents = [
         definition: [
             [SpecialText.fromString("$A$", true), "A เป็นเซตใดๆ"],
             [SpecialText.fromString("$n(A)$", true), "จำนวนสมาชิกเซต A"]
-        ]
+        ],
+        keywords: ["amount", "set", '<']
     }),
     ContentBoxCreator.fromObject({
         references: ["เซต", "เพาเวอร์เซต"],

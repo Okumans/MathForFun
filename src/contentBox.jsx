@@ -200,7 +200,8 @@ export class ContentBoxCreator {
             table,
             definition,
             image,
-            video } = dict
+            video,
+            keywords } = dict
 
         return new ContentBoxCreator(
             references,
@@ -210,6 +211,7 @@ export class ContentBoxCreator {
             table,
             definition,
             image,
-            video)
+            video,
+            keywords)
     }
 }

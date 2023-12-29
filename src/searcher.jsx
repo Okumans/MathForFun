@@ -9,6 +9,7 @@ export class Searcher {
   }
 
   search(text) {
+    console.log(this.content)
     const results = Object.entries(this.content)
       .map(([title, keys]) => [
         title,
