@@ -84,7 +84,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                 </div>
                                 : table ?
                                     <div className="p-2 md:p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
-                                        <TableGenerator info={table} />
+                                        <TableGenerator info={table}/>
                                     </div>
                                     : null}
 
@@ -125,14 +125,15 @@ const TableGenerator = ({ info }) => {
             {contents.map((row, index) =>
                 <tr key={index} className="border-2 break-all border-white border-solid">{row.map((col) =>
                     <td key={col.rawContent} className="border-2 py-3 text-sm sm:text-lg md:text-xl lg:text-2xl border-white border-solid px-3">
-                        {col.content}
+                        <div>
+                            {col.content}
+                        </div>
                     </td>)}
                 </tr>)}
         </tbody>
     </table>
 }
 
-// TODO: add key word field
 export class ContentBoxCreator {
     constructor(
         references,
@@ -142,7 +143,8 @@ export class ContentBoxCreator {
         table = undefined,
         definition = undefined,
         image = undefined,
-        video = undefined
+        video = undefined,
+        keywords = undefined
     ) {
         this.references = references;
         this.title = title;
@@ -152,6 +154,7 @@ export class ContentBoxCreator {
         this.definition = definition;
         this.image = image;
         this.video = video
+        this.keywords = keywords;
 
         // change normal string to SpecialText if need **all text use below is all SpecialText for latex support 
         if (this.references) SpecialText.recursiveNestToSpecialText(this.references);
@@ -197,7 +200,8 @@ export class ContentBoxCreator {
             table,
             definition,
             image,
-            video } = dict
+            video,
+            keywords } = dict
 
         return new ContentBoxCreator(
             references,
@@ -207,6 +211,7 @@ export class ContentBoxCreator {
             table,
             definition,
             image,
-            video)
+            video,
+            keywords)
     }
 }

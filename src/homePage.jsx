@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { Searcher } from "./searcher";
 import { mergedContent } from "./content/mergedContents";
-import { removeDuplicateFilter } from "./utility";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Box = ({ message }) => {
@@ -43,9 +42,8 @@ export const HomePage = () => {
     const searchTerm = event.target.value;
     setSearchText(searchTerm);
     const results = searcher.search(searchTerm);
-    setSearchResult(removeDuplicateFilter(results, (value) =>
-      value.parent.title).map((value) =>
-        value.parent))
+    console.log(results);
+    setSearchResult(results);
   };
 
   const containerAnimationItems = {
@@ -176,6 +174,7 @@ export const HomePage = () => {
                       className="w-full flex flex-col gap-2"
                       variants={containerAnimationBoxs}
                       animate="show"
+                      key="None"
                       initial="hidden"
                       exit="exit">
                       {searchResult.map((creator) => (
