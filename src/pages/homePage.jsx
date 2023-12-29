@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { Searcher } from "./searcher";
+import { Searcher } from "../searcher";
 import { mergedContent } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -107,7 +107,7 @@ export const HomePage = () => {
 
   return (
     <div className="flex flex-row justify-center min-h-screen" >
-      <div className="flex flex-col w-full bg-[url('src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5">
+      <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5">
 
         <div className="my-10 md:my-16"/>
         <p className="text-white [text-shadow:0px_4px_4px_#00000040] font-bold text-4xl md:text-6xl lg:text-7xl text-center tracking-[0] leading-[normal]">
