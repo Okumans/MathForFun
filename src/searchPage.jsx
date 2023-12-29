@@ -19,12 +19,8 @@ export const SearchPage = () => {
         const topicResults = topicSearcher.search(searchTerm);
 
         setSearchText(event.target.value);
-        setSearchContentResult(removeDuplicateFilter(contentResults, (value) =>
-            value.parent.title).map((value) =>
-                value.parent));
-        setSearchTopicResult(removeDuplicateFilter(topicResults, (value) =>
-            value.parent.title).map((value) =>
-                value.parent));
+        setSearchContentResult(contentResults);
+        setSearchTopicResult(topicResults);
     };
 
     const boxAnimation = {

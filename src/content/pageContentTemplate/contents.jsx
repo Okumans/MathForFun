@@ -78,7 +78,7 @@ export const sampleContents = [
         references: ["วง", "โพลิโนเมียล"],
         title: "วงของโพลิโนเมียล",
         description: SpecialText.fromString("วงของโพลิโนเมียล $R[x]$ คือเซตของโพลิโนเมียลทั้งหมดที่มีตัวแปร $x$ และคอนฟิกยกตัวอย่างเช่น โพลิโนเมียล $ax^2 + bx + c$", true),
-        equation: SpecialText.fromString("$R[x] = \\{$โพลิโนเมียลทั้งหมดที่มีตัวแปร $x\\}$", true),
+        equation: SpecialText.fromString("$R[x]$ = {โพลิโนเมียลทั้งหมดที่มีตัวแปร $x$}", true),
         definition: [
             [SpecialText.fromString("$R[x]$", true), "วงของโพลิโนเมียล"],
             [SpecialText.fromString("$x$", true), "ตัวแปร"]
