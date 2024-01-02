@@ -16,17 +16,91 @@ export const sampleContents = [
     ContentBoxCreator.fromObject({
         references: ["เซต", "เพาเวอร์เซต"],
         title: "จำนวนสมาชิกเพาเวอร์เซต์อีกอัน",
-        description: "A เป็นเซตใดๆ. พาวเวอร์เซต คือ เซตของสับเซตทั้งหมดของ A เพาเวอร์เซตของ A",
+        description: SpecialText.fromString("$A$ เป็นเซตใดๆ. พาวเวอร์เซต คือ เซตของสับเซตทั้งหมดของ $A$ เพาเวอร์เซตของ $A$", true),
         table: [
             [SpecialText.fromString("name", false), "eqution"],
             [["number of powersest", SpecialText.fromString("$n(P(A)) = 2^{n(A)}$", true)]]
         ],
         definition: [
-            ["A", "A เป็นเซตใดๆ"],
+            [SpecialText.fromString("$A$", true), "A เป็นเซตใดๆ"],
             ["n(A)", "จำนวนสมาชิกเซต A"]
         ],
         video: "https://www.youtube.com/embed/ZRtdQ81jPUQ"
     }),
+    ContentBoxCreator.fromObject(
+        {
+            references: [
+                {
+                    rawContent: "เซต",
+                    isLatex: false,
+                    classes: ""
+                },
+                {
+                    rawContent: "เพาเวอร์เซต",
+                    isLatex: false,
+                    classes: ""
+                }
+            ],
+            title: {
+                rawContent: "another จำนวนสมาชิกเพาเวอร์เซต์",
+                isLatex: false,
+                classes: ""
+            },
+            description: {
+                rawContent: "A เป็นเซตใดๆ. พาวเวอร์เซต คือ เซตของสับเซตทั้งหมดของ A เพาเวอร์เซตของ A",
+                isLatex: false,
+                classes: ""
+            },
+            equation: {
+                rawContent: "$n(P(A)) = 2^{n(A)}$",
+                isLatex: true,
+                classes: ""
+            },
+            definition: [
+                [
+                    {
+                        rawContent: "$A$",
+                        isLatex: true,
+                        classes: ""
+                    },
+                    {
+                        rawContent: "A เป็นเซตใดๆ",
+                        isLatex: false,
+                        classes: ""
+                    }
+                ],
+                [
+                    {
+                        rawContent: "$n(A)$",
+                        isLatex: true,
+                        classes: ""
+                    },
+                    {
+                        rawContent: "จำนวนสมาชิกเซต A",
+                        isLatex: false,
+                        classes: ""
+                    }
+                ]
+            ],
+            keywords: [
+                {
+                    rawContent: "amount",
+                    isLatex: false,
+                    classes: ""
+                },
+                {
+                    rawContent: "set",
+                    isLatex: false,
+                    classes: ""
+                },
+                {
+                    rawContent: "<",
+                    isLatex: false,
+                    classes: ""
+                }
+            ]
+        }
+    ),
     ContentBoxCreator.fromObject({
         references: ["เซต"],
         title: "เซตจำกัด (Finite Set)",

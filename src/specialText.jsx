@@ -34,8 +34,11 @@ export class SpecialText {
         switch (typeof text) {
             case 'string':
                 return SpecialText.fromString(text);
-            case SpecialText:
-                return text;
+            case 'object':
+                if (text instanceof SpecialText)
+                    return text;
+                else if (text.rawContent || text.isLatex || text.classes)
+                    return new SpecialText(text.rawContent || "", text.isLatex || false, text.classes || "")
             default:
                 return text;
         }
