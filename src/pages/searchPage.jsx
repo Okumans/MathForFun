@@ -124,8 +124,8 @@ export const SearchPage = () => {
                                     initial="hidden"
                                     exit="exit">
                                     {searchTopicResult.map((topic) =>
-                                        <motion.div key={topic.title} layout variants={itemAnimation}>
-                                            <div className="min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-lg hover:bg-opacity-60 transition-all backdrop-blur-sm">
+                                        <motion.div key={topic.title} layout variants={itemAnimation} className="flex-grow">
+                                            <div className="flex-grow min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-lg hover:bg-opacity-60 transition-all backdrop-blur-sm">
                                                 <div className="w-full py-2 px-3 font-medium text-white text-lg text-center">
                                                     {topic.title}
                                                 </div>

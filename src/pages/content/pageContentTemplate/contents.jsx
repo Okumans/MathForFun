@@ -27,6 +27,7 @@ export const sampleContents = [
         ],
         video: "https://www.youtube.com/embed/ZRtdQ81jPUQ"
     }),
+    
     ContentBoxCreator.fromObject(
         {
             references: [
