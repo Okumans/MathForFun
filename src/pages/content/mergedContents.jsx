@@ -1,7 +1,7 @@
 import { sampleContents } from "./pageContentTemplate/contents";
 import { Searcher } from "../../searcher";
 import { TopicBoxCreator } from "../../topicBox";
-
+import { realNumberContent } from "./pageRealNumber/contents";
 
 const searcher = new Searcher([...sampleContents]);
 const tagTable = searcher.getTagTable();
@@ -14,6 +14,7 @@ export const topics = Object.entries(tagTable).map(([tag, contents]) => TopicBox
 }));
 
 export const mergedContent = [
-    ...sampleContents
+    ...sampleContents,
+    ...realNumberContent
 ];
 
