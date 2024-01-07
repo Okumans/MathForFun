@@ -27,7 +27,7 @@ export const sampleContents = [
         ],
         video: "https://www.youtube.com/embed/ZRtdQ81jPUQ"
     }),
-    
+
     ContentBoxCreator.fromObject(
         {
             references: [
@@ -173,7 +173,7 @@ export const sampleContents = [
     ContentBoxCreator.fromObject({
         references: ["ฟังก์ชัน", "โฮโมมอร์ฟิซึม"],
         title: "โฮโมมอร์ฟิซึม",
-        description: SpecialText.fromString("โฮโมมอร์ฟิซึม $\\phi$ ระหว่างกลุ่ม $G$ และ $H$ คือฟังก์ชันที่ประสานกันระหว่างกลุ่มนั้นๆ", true), 
+        description: SpecialText.fromString("โฮโมมอร์ฟิซึม $\\phi$ ระหว่างกลุ่ม $G$ และ $H$ คือฟังก์ชันที่ประสานกันระหว่างกลุ่มนั้นๆ", true),
         equation: SpecialText.fromString("$\\phi : G \\rightarrow H$", true),
         definition: [
             [SpecialText.fromString("$\\phi$", true), "โฮโมมอร์ฟิซึม"],
@@ -222,7 +222,7 @@ export const sampleContents = [
     ContentBoxCreator.fromObject({
         references: ["กลุ่ม", "การกระทำ"],
         title: "การกระทำของกลุ่ม",
-        description: SpecialText.fromString("การกระทำของกลุ่ม $G$ บนเซต $X$ คือฟังก์ชันที่เชื่อมโยงสมาชิกของ $G$ กับการเปลี่ยนแปลงของ $X$",true),
+        description: SpecialText.fromString("การกระทำของกลุ่ม $G$ บนเซต $X$ คือฟังก์ชันที่เชื่อมโยงสมาชิกของ $G$ กับการเปลี่ยนแปลงของ $X$", true),
         equation: SpecialText.fromString("$G \\curvearrowright X$", true),
         definition: [
             [SpecialText.fromString("$G$", true), "กลุ่ม"],
@@ -237,17 +237,18 @@ export const sampleContents = [
         definition: [
             [SpecialText.fromString("ทฤษฎีเชิงเส้น", true), "การศึกษาคุณสมบัติของตาราง"]
         ]
-    })
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }),
+    ContentBoxCreator.fromObject({ references: [{ rawContent: "สถิติ", isLatex: false, classes: "" }], title: { rawContent: "ความแปรปรวนของตัวอย่าง", isLatex: false, classes: "" }, description: { rawContent: "เป็นการวัดระดับของความต่างกันของข้อมูลแต่ละจุดจากค่าเฉลี่ย มันบ่งบอกถึงการกระจายหรือการแตกต่างของค่าต่าง ๆ ในชุดข้อมูล", isLatex: false, classes: "test" }, equation: { rawContent: "$S^2 = \\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2$", isLatex: true, classes: "" }, definition: [[{ rawContent: "$S^2$", isLatex: true, classes: "" }, { rawContent: "ค่าความแปรปรวนของตัวอย่าง", isLatex: false, classes: "" }], [{ rawContent: "$n$", isLatex: true, classes: "" }, { rawContent: "จำนวนข้อมูลในตัวอย่าง", isLatex: false, classes: "" }], [{ rawContent: "$x_i$", isLatex: true, classes: "" }, { rawContent: "ค่าของข้อมูลในตำแหน่งที่  $i$", isLatex: true, classes: "" }], [{ rawContent: "$\\bar{x}$", isLatex: true, classes: "" }, { rawContent: "ค่าเฉลี่ยของตัวอย่าง", isLatex: false, classes: "" }]], keywords: [{ rawContent: "ค่าแปรปรวน", isLatex: false, classes: "" }, { rawContent: "Sample Variance", isLatex: false, classes: "" }, { rawContent: "ความแปรปรวนของตัวอย่าง", isLatex: false, classes: "" }] })
+
+
+
+
+
+
+
+
+
+
+
 
 ]

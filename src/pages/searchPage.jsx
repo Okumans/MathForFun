@@ -3,6 +3,7 @@ import { IoMdSearch } from "react-icons/io";
 import { Searcher } from "../searcher";
 import { mergedContent, topics } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export const SearchPage = () => {
     const [searchContentResult, setSearchContentResult] = useState([]);
@@ -10,6 +11,7 @@ export const SearchPage = () => {
     const [searchText, setSearchText] = useState("");
     const contentSearcher = useRef(new Searcher(mergedContent)).current;
     const topicSearcher = useRef(new Searcher(topics)).current;
+    const navigate = useNavigate();
 
     const handleSearchEvent = (event) => {
         const searchTerm = event.target.value;
@@ -126,7 +128,11 @@ export const SearchPage = () => {
                                     {searchTopicResult.map((topic) =>
                                         <motion.div key={topic.title} layout variants={itemAnimation} className="flex-grow">
                                             <div className="flex-grow min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-lg hover:bg-opacity-60 transition-all backdrop-blur-sm">
-                                                <div className="w-full py-2 px-3 font-medium text-white text-lg text-center">
+                                                <div 
+                                                className="w-full py-2 px-3 font-medium text-white text-lg text-center"
+                                                onClick={() => {
+                                                    navigate("/tags/"+topic.title);
+                                                }}>
                                                     {topic.title}
                                                 </div>
                                             </div>
