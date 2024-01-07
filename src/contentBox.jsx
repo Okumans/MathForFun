@@ -65,7 +65,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                     <div className="flex flex-col gap-2">
 
                         {/* description */}
-                        <div className="pb-2 w-full text-left text-white text-base md:text-lg font-medium pl-1">{description.content}</div>
+                        <div className="pb-2 w-full text-left text-white text-base md:text-lg font-medium pl-1">{description?.content}</div>
 
                         {/* image or video */}
                         {
@@ -90,7 +90,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
 
                             {equation ?
                                 <div className="p-4 flex items-center min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
-                                    <div className="w-full text-center">{equation.contentNoStyle}</div>
+                                    <div className="w-full text-center">{equation?.contentNoStyle}</div>
                                 </div>
                                 : table ?
                                     <div className="p-2 md:p-4 min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
@@ -105,8 +105,8 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                     {definition.map(([key, value], index) =>
                                         <tbody key={index}>
                                             <tr>
-                                                <td><div className="p-1 my-0.5 flex text-white text-base md:text-lg font-medium bg-white bg-opacity-30 rounded-lg shadow-md justify-center">{key.content}</div></td>
-                                                <td><div className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value.content}</div></td>
+                                                <td><div className="p-1 my-0.5 flex text-white text-base md:text-lg font-medium bg-white bg-opacity-30 rounded-lg shadow-md justify-center">{key?.content}</div></td>
+                                                <td><div className="p-1 text-white text-base md:text-lg font-medium bg-opacity-30 text-left break-all">{value?.content}</div></td>
                                             </tr>
                                         </tbody>
                                     )}
