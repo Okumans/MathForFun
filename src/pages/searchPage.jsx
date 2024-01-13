@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { Searcher } from "../searcher";
+import { ExpressionSearcher } from "../searcherParser";
 import { mergedContent, topics } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -9,14 +10,16 @@ export const SearchPage = () => {
     const [searchContentResult, setSearchContentResult] = useState([]);
     const [searchTopicResult, setSearchTopicResult] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const contentSearcher = useRef(new Searcher(mergedContent)).current;
-    const topicSearcher = useRef(new Searcher(topics)).current;
+    const contentSearcher = useRef(new ExpressionSearcher(mergedContent)).current;
+    const topicSearcher = useRef(new ExpressionSearcher(topics)).current;
     const navigate = useNavigate();
 
     const handleSearchEvent = (event) => {
         const searchTerm = event.target.value;
-        const contentResults = contentSearcher.search(searchTerm);
-        const topicResults = topicSearcher.search(searchTerm);
+        const contentResults = contentSearcher.convert(contentSearcher.searcherParser(searchTerm));
+        const topicResults = topicSearcher.convert(topicSearcher.searcherParser(searchTerm));
+
+        // console.log("debugd:", testSearcher.searcherParser(searchTerm));
 
         setSearchText(event.target.value);
         setSearchContentResult(contentResults);
@@ -118,10 +121,11 @@ export const SearchPage = () => {
 
                         <AnimatePresence layout mode={"popLayout"}>
                             {searchTopicResult.length == 0 ?
-                                <div/> // need to be here don't know why
+                                <div key="None0"/> // need to be here don't know why
                                 :
                                 <motion.div className="flex flex-wrap gap-x-3 gap-y-2 w-full"
                                     variants={containerAnimationItems}
+                                    key="None1"
                                     animate="show"
                                     initial="hidden"
                                     exit="exit">
@@ -141,7 +145,7 @@ export const SearchPage = () => {
                                 </motion.div>
                             }
                             {searchContentResult.length == 0 ?
-                                <motion.div key="None" layout variants={boxAnimation} initial="hidden" animate="show" exit="exit">
+                                <motion.div key="None2" layout variants={boxAnimation} initial="hidden" animate="show" exit="exit">
                                     <div className="w-full flex justify-center">
                                         <p className="p-3 text-center text-white font-semibold bg-white bg-opacity-20 backdrop-blur-sm w-fit rounded-md">ไม่มีผลการค้นหา 🤔</p>
                                     </div>
@@ -149,6 +153,7 @@ export const SearchPage = () => {
                                 :
                                 <motion.div
                                     className="w-full flex flex-col gap-2"
+                                    key="None3"
                                     variants={containerAnimationBoxs}
                                     animate="show"
                                     initial="hidden"

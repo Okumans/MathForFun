@@ -39,7 +39,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                     <div className="flex justify-between">
                         <div className="flex gap-2">
                             {references.map((reference, index) =>
-                                <button
+                                <div
                                     key={index}
                                     className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md hover:scale-105 hover:bg-opacity-40 transition ease-in-out"
                                     onClick={(event) => {
@@ -47,7 +47,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                         navigate("/tags/"+reference.rawContent);
                                         
                                     }}
-                                    >{reference.contentNoStyle}</button>
+                                    >{reference.contentNoStyle}</div>
                             )}
                         </div>
                     </div>
