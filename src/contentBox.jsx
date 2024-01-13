@@ -13,14 +13,14 @@ export const ContentBox = ({ references, title, description, equation, table, de
         <div className="flex flex-col p-3 w-full gap-2">
 
             {/* lock button */}
-            <button
+            {/* <button
                 className={"absolute w-fit top-2 right-2 bg-white rounded-full transition-all " + (contentLock ? "p-4 bg-opacity-50 -translate-y-0.5 translate-x-0.5" : "p-3 bg-opacity-20")}
                 onClick={() => setContentLock(!contentLock)}>
                 {contentLock ?
                     <FaUnlock width="10" height="10" fill="white" /> :
                     <FaLock width="10" height="10" fill="white" />
                 }
-            </button>
+            </button> */}
 
             <button
                 className="w-full"

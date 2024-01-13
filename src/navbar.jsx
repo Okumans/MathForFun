@@ -2,26 +2,24 @@ import React from 'react';
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { IoSearch } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 const classNames = (...classes) => {
     return classes.filter(Boolean).join(' ')
 }
-
-// TODO: add link to each labeled page
-// TODO: add icon to each item ?optional
-
 const Item = ({ text, link }) => {
     return <Menu.Item>
         {({ active }) => (
-            <a
-                href={link}
+            <Link 
+                to={"/topics/"+link}
                 className={classNames(
                     active ? 'bg-gray-100 bg-opacity-20 text-white' : 'text-white',
                     'block px-4 py-2 text-base transition-all '
                 )}
             >
                 {text}
-            </a>
+            </Link>
         )}
     </Menu.Item>
 }
@@ -30,7 +28,7 @@ const Dropdown = () => {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent  px-3 py-2 text-base md:text-lg font-semibold text-white shadow-sm  hover:bg-purple-50 hover:bg-opacity-20">
+                <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent  px-3 py-2 text-base md:text-lg font-semibold text-white shadow-sm  hover:bg-purple-50 hover:bg-opacity-20 transition-all">
                     เรื่อง
                     <RiArrowDropDownLine className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                 </Menu.Button>
@@ -47,22 +45,21 @@ const Dropdown = () => {
             >
                 <Menu.Items className="absolute right-0 mt-8 min-w-fit w-fit md:w-56 origin-top-right rounded-md bg-black bg-opacity-40 backdrop-blur-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
-                        <Item text="เซต" />
-                        <Item text="ตรรกศาสตร์" />
-                        <Item text="จำนวนจริง" />
-                        <Item text="ฟังก์ชั่น" />
-                        <Item text="ภาคตัดกรวย" />
-                        <Item text="เรขาคณิต" />
-                        <Item text="expo&log" />
-                        <Item text="เมทริกซ์" />
-                        <Item text="ตรีโกณมิติ" />
-                        <Item text="เวกเตอร์" />
-                        <Item text="จำนวนเชิงซ้อน" />
-                        <Item text="ลำดับและอนุกรม" />
-                        <Item text="ความน่าจะเป็น" />
-                        <Item text="แคลคูลัส" />
-                        <Item text="สถิติ" />
-                        <Item text="พีชคณิต" />
+                        <Item text="เซต" link="set"/>
+                        <Item text="ตรรกศาสตร์" link="logic"/>
+                        <Item text="จำนวนจริง" link="real-number"/>
+                        <Item text="ฟังก์ชั่น" link="function"/>
+                        <Item text="ภาคตัดกรวย" link="conic-section"/>
+                        <Item text="เรขาคณิต" link="analytic-geometry"/>
+                        <Item text="expo&log" link="exponential-logarithm"/>
+                        <Item text="เมทริกซ์" link="matrix"/>
+                        <Item text="ตรีโกณมิติ" link="trigonometry"/>
+                        <Item text="เวกเตอร์" link="vector"/>
+                        <Item text="จำนวนเชิงซ้อน" link="complex-number"/>
+                        <Item text="ลำดับและอนุกรม" link="sequence-series"/>
+                        <Item text="ความน่าจะเป็น" link="probability"/>
+                        <Item text="แคลคูลัส" link="calculus"/>
+                        <Item text="สถิติ" link="statistics"/>
                     </div>
                 </Menu.Items>
             </Transition>
@@ -79,11 +76,17 @@ export const Navbar = () => {
                         <a href='/'>
                             <img className="h-8 md:h-14 object-cover" alt="Logo" src="../src/assets/logo.png" />
                         </a>
-                        <div className="ml-5">
-                            <div className='ml-5'>
-                                <Dropdown />
-                            </div>
-                        </div>
+                       <div className='flex'>
+                         <div className="ml-5">
+                             <div className='ml-5'>
+                                 <Dropdown />
+                             </div>
+                         </div>
+                         <Link to="/search" className='flex items-center gap-2 ml-5 w-fit text-base px-3 py-2 text-white font-semibold bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all'>
+                            <p>ค้นหา</p>
+                            <IoSearch fill='white'/>
+                        </Link>
+                       </div>
                     </div>
                     {/* <img className="w-[11px] h-[10px] top-[36px] left-[222px]" alt="Polygon" src="polygon-1.svg" /> */}
                     <a className="right-10 opacity-70 font-medium text-white text-base md:text-lg" href='/reference'>
