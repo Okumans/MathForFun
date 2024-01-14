@@ -13,14 +13,14 @@ export const ContentBox = ({ references, title, description, equation, table, de
         <div className="flex flex-col p-3 w-full gap-2">
 
             {/* lock button */}
-            <button
+            {/* <button
                 className={"absolute w-fit top-2 right-2 bg-white rounded-full transition-all " + (contentLock ? "p-4 bg-opacity-50 -translate-y-0.5 translate-x-0.5" : "p-3 bg-opacity-20")}
                 onClick={() => setContentLock(!contentLock)}>
                 {contentLock ?
                     <FaUnlock width="10" height="10" fill="white" /> :
                     <FaLock width="10" height="10" fill="white" />
                 }
-            </button>
+            </button> */}
 
             <button
                 className="w-full"
@@ -39,7 +39,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                     <div className="flex justify-between">
                         <div className="flex gap-2">
                             {references.map((reference, index) =>
-                                <button
+                                <div
                                     key={index}
                                     className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md hover:scale-105 hover:bg-opacity-40 transition ease-in-out"
                                     onClick={(event) => {
@@ -47,7 +47,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                         navigate("/tags/"+reference.rawContent);
                                         
                                     }}
-                                    >{reference.contentNoStyle}</button>
+                                    >{reference.contentNoStyle}</div>
                             )}
                         </div>
                     </div>

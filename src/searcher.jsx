@@ -1,4 +1,5 @@
 import fuzzysort from 'fuzzysort'
+import { removeDuplicateFilter } from './utility';
 
 export class Searcher {
   constructor(rawContents) {
@@ -37,6 +38,29 @@ export class Searcher {
       }));
 
     return results
+  }
+
+  rawSearch(text) {
+    return Object.entries(this.content)
+        .map(([title, keys]) => [
+          title,
+          Object.entries(keys)
+            .map(([_, { contents, weight }]) =>
+              fuzzysort.go(text, contents)
+                .map((value) => ({
+                  name: value.target,
+                  score: (10000 + value.score) * weight,
+                }))
+            )
+            .filter(elm => elm.length !== 0)
+            .flat(2)
+        ])
+        .map(([key, results]) => [
+          key,
+          results.map((result) => result.score)
+            .reduce((a, b) => a + b, 0)
+        ])
+    
   }
 
   createMappingTable(Contents = this.rawContents) {

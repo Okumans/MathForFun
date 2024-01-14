@@ -4,14 +4,17 @@ import { IoMdSearch } from "react-icons/io";
 import { Searcher } from "../searcher";
 import { mergedContent } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const Box = ({ message }) => {
+const Box = ({ message, path }) => {
   return <>
-    <div className="min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-full hover:bg-opacity-60 transition-all backdrop-blur-sm">
-      <div className="w-full p-1 font-medium text-white text-lg text-center">
-        {message}
+    <Link to={"/topics/"+path}>
+      <div className="min-w-fit bg-gray-300 bg-opacity-40 shadow-md rounded-full hover:bg-opacity-60 transition-all backdrop-blur-sm">
+        <div className="w-full p-1 font-medium text-white text-lg text-center">
+          {message}
+        </div>
       </div>
-    </div>
+    </Link>
   </>
 }
 
@@ -20,22 +23,22 @@ export const HomePage = () => {
   const [searchText, setSearchText] = useState("");
   const searcher = useRef(new Searcher(mergedContent)).current;
   const topics = [
-    "เซต",
-    "ตรรกศาสตร์",
-    "จำนวนจริง",
-    "ฟังก์ชั่น",
-    "ภาคตัดกรวย",
-    "เรขาคณิต",
-    "expo&log",
-    "เมทริกซ์",
-    "ตรีโกณมิติ",
-    "เวกเตอร์",
-    "จำนวนเชิงซ้อน",
-    "ลำดับและอนุกรม",
-    "ความน่าจะเป็น",
-    "แคลคูลัส",
-    "สถิติ",
-    "พีชคณิต"
+    ["เซต", "set"],
+    ["ตรรกศาสตร์", "logic"],
+    ["จำนวนจริง", "real-number"],
+    ["ฟังก์ชั่น", "function"],
+    ["ภาคตัดกรวย", "conic-section"],
+    ["เรขาคณิตวิเคราะห์", "analytic-geometry"],
+    ["expo&log", "exponential-logarithm"],
+    ["เมทริกซ์", "matrix"],
+    ["ตรีโกณมิติ", "trigonometry"],
+    ["เวกเตอร์", "vector"],
+    ["จำนวนเชิงซ้อน", "complex-number"],
+    ["ลำดับและอนุกรม", "sequence-series"],
+    ["ความน่าจะเป็น", "probability"],
+    ["แคลคูลัส", "calculus"],
+    ["สถิติ", "statistics"],
+    // ["พีชคณิต", "Algebra"]
   ];
 
   const handleSearchEvent = (event) => {
@@ -109,7 +112,7 @@ export const HomePage = () => {
     <div className="flex flex-row justify-center min-h-screen" >
       <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-5">
 
-        <div className="my-10 md:my-16"/>
+        <div className="my-10 md:my-16" />
         <p className="text-white [text-shadow:0px_4px_4px_#00000040] font-bold text-4xl md:text-6xl lg:text-7xl text-center tracking-[0] leading-[normal]">
           สูตรคณิตคิดไม่ออก
         </p>
@@ -145,14 +148,14 @@ export const HomePage = () => {
             <AnimatePresence layout mode={"popLayout"}>
               {searchText.length == 0
                 ?
-                <motion.div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 w-full"
+                <motion.div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 w-full"
                   variants={containerAnimationItems}
                   animate="show"
                   initial="hidden"
                   exit="exit">
-                  {topics.map((topic) =>
+                  {topics.map(([topic, path]) =>
                     <motion.div key={topic} layout variants={itemAnimation}>
-                      <Box message={topic} />
+                      <Box message={topic} path={path} />
                     </motion.div>
                   )}
                 </motion.div>

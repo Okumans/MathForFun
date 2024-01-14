@@ -3,7 +3,7 @@ import { sampleContents } from "./contents";
 import { AnimatePresence, motion } from "framer-motion";
 
 export const PageContentTemplate = () => {
-  const { topic } = useParams()
+  const topic  = "All topics";
 
   const boxAnimation = {
     hidden: { scale: 0, opacity: 0, y: 50 },

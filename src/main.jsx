@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import { HomePage } from './pages/homePage'
 import { Navbar } from './navbar'
 import { PageContentTemplate } from './pages/content/pageContentTemplate/pageContentTemplate'
+import { PageRealNumber } from './pages/content/pageRealNumber/pageRealNumber'
 import { SearchPage } from './pages/searchPage'
 import { ReferencePage } from './pages/referencePage'
 import { TagPage } from './pages/tagPage'
@@ -18,10 +19,17 @@ const router = createBrowserRouter([
     </>
   },
   {
-    path: "/topics/:topic",
+    path: "/topics/all",
     element: <>
     <Navbar/>
     <PageContentTemplate/>
+    </>
+  },
+  {
+    path: "/topics/real-number",
+    element: <>
+    <Navbar/>
+    <PageRealNumber/>
     </>
   },
   {

@@ -18,3 +18,7 @@ export const mergedContent = [
     ...realNumberContent
 ];
 
+
+export const findByTitle = (title) => {
+    return mergedContent.find((val) => val.title.rawContent == title);  
+}
