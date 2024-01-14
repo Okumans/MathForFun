@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { Searcher } from "../searcher";
 import { ExpressionSearcher } from "../searcherParser";
-import { mergedContent, topics } from "./content/mergedContents";
+import { mergedContent, topics, createSearchContent } from "./content/mergedContents";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ export const SearchPage = () => {
     const [searchContentResult, setSearchContentResult] = useState([]);
     const [searchTopicResult, setSearchTopicResult] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const contentSearcher = useRef(new ExpressionSearcher(mergedContent)).current;
+    const contentSearcher = useRef(new ExpressionSearcher(createSearchContent(mergedContent))).current;
     const topicSearcher = useRef(new ExpressionSearcher(topics)).current;
     const navigate = useNavigate();
 
@@ -18,8 +17,6 @@ export const SearchPage = () => {
         const searchTerm = event.target.value;
         const contentResults = contentSearcher.convert(contentSearcher.searcherParser(searchTerm));
         const topicResults = topicSearcher.convert(topicSearcher.searcherParser(searchTerm));
-
-        // console.log("debugd:", testSearcher.searcherParser(searchTerm));
 
         setSearchText(event.target.value);
         setSearchContentResult(contentResults);

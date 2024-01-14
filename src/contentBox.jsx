@@ -4,8 +4,8 @@ import { FaLock, FaUnlock } from "react-icons/fa";
 import { SpecialText } from './specialText';
 import { useNavigate } from 'react-router-dom';
 
-export const ContentBox = ({ references, title, description, equation, table, definition, image, video }) => {
-    const [height, setHeight] = useState(0);
+export const ContentBox = ({ references, title, description, equation, table, definition, image, video, defualtHeight }) => {
+    const [height, setHeight] = useState(defualtHeight || 0);
     const [contentLock, setContentLock] = useState(false);
     const navigate = useNavigate();
 
@@ -44,10 +44,10 @@ export const ContentBox = ({ references, title, description, equation, table, de
                                     className="w-fit p-1 px-2 text-white text-base md:text-lg font-semibold bg-white bg-opacity-30 rounded-lg shadow-md hover:scale-105 hover:bg-opacity-40 transition ease-in-out"
                                     onClick={(event) => {
                                         event.stopPropagation();
-                                        navigate("/tags/"+reference.rawContent);
-                                        
+                                        navigate("/tags/" + reference.rawContent);
+
                                     }}
-                                    >{reference.contentNoStyle}</div>
+                                >{reference.contentNoStyle}</div>
                             )}
                         </div>
                     </div>
@@ -144,9 +144,6 @@ const TableGenerator = ({ info }) => {
     </table>
 }
 
-
-//TODO: make tag usable
-
 // required:
 //     - topics: [string / SpecialText]
 //     - title: [string / SpecialText]
@@ -168,7 +165,8 @@ export class ContentBoxCreator {
         definition = undefined,
         image = undefined,
         video = undefined,
-        keywords = undefined
+        keywords = undefined,
+        defualtHeight = undefined
     ) {
         this.references = references;
         this.title = title;
@@ -179,6 +177,7 @@ export class ContentBoxCreator {
         this.image = image;
         this.video = video
         this.keywords = keywords;
+        this.defualtHeight = defualtHeight ? "auto" : 0;
 
         // change normal string to SpecialText if need **all text use below is all SpecialText for latex support 
         if (this.references) SpecialText.recursiveNestToSpecialText(this.references);
@@ -199,6 +198,7 @@ export class ContentBoxCreator {
             definition={this.definition}
             image={this.image}
             video={this.video}
+            defualtHeight={this.defualtHeight}
         />
     }
 
@@ -213,7 +213,22 @@ export class ContentBoxCreator {
             definition={this.definition}
             image={this.image}
             video={this.video}
+            defualtHeight={this.defualtHeight}
         />
+    }
+
+    toObject() {
+        return {
+            references: this.references,
+            title: this.title,
+            description: this.description,
+            equation: this.equation,
+            table: this.table,
+            definition: this.definition,
+            image: this.image,
+            video: this.video,
+            defualtHeight: this.defualtHeight,
+        }
     }
 
     static fromObject(dict) {
@@ -225,7 +240,8 @@ export class ContentBoxCreator {
             definition,
             image,
             video,
-            keywords } = dict
+            keywords,
+            defualtHeight } = dict
 
         return new ContentBoxCreator(
             references,
@@ -236,6 +252,11 @@ export class ContentBoxCreator {
             definition,
             image,
             video,
-            keywords)
+            keywords,
+            defualtHeight)
     }
+}
+
+export const makeExpand = (content, expanded) => {
+    return ContentBoxCreator.fromObject({...content.toObject(), defualtHeight: expanded});
 }

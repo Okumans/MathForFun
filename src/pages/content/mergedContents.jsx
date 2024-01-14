@@ -2,9 +2,21 @@ import { sampleContents } from "./pageContentTemplate/contents";
 import { Searcher } from "../../searcher";
 import { TopicBoxCreator } from "../../topicBox";
 import { realNumberContent } from "./pageRealNumber/contents";
+import { ContentBoxCreator } from "../../contentBox";
 
-const searcher = new Searcher([...sampleContents]);
+export const mergedContent = [
+    ...sampleContents,
+    ...realNumberContent
+]
+
+const searcher = new Searcher([...mergedContent]);
 const tagTable = searcher.getTagTable();
+
+export const createSearchContent = (contents) => {
+    return contents.map(
+        content => ContentBoxCreator.fromObject({...content.toObject(), defualtHeight: 0})
+    )
+}
 
 export const topics = Object.entries(tagTable).map(([tag, contents]) => TopicBoxCreator.fromObject({
     references: [],
@@ -12,11 +24,6 @@ export const topics = Object.entries(tagTable).map(([tag, contents]) => TopicBox
     title: tag,
     topics: contents.map((content) => content.title.rawContent),
 }));
-
-export const mergedContent = [
-    ...sampleContents,
-    ...realNumberContent
-];
 
 
 export const findByTitle = (title) => {
