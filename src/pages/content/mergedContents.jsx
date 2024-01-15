@@ -3,10 +3,12 @@ import { Searcher } from "../../searcher";
 import { TopicBoxCreator } from "../../topicBox";
 import { realNumberContent } from "./pageRealNumber/contents";
 import { ContentBoxCreator } from "../../contentBox";
+import { setContents } from "./pageSet/contents";
 
 export const mergedContent = [
     ...sampleContents,
-    ...realNumberContent
+    ...realNumberContent,
+    ...setContents
 ]
 
 const searcher = new Searcher([...mergedContent]);
