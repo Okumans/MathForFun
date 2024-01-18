@@ -12,7 +12,11 @@ export class SpecialText {
         return <div className="flex gap-1 flex-wrap items-baseline">
             {this.rawContent.split(/(\$.*?\$)/).map((textElement, index) => {
                 if (textElement.startsWith("$") && textElement.endsWith("$")) {
-                    return <p key={index} className={this.classes + " font-sans"}>{this.isLatex ? <Latex>{textElement}</Latex> : textElement} </p>
+                    console.log(textElement)
+                    if (textElement == '$!break!$')
+                        return <br/>
+                    else
+                        return <p key={index} className={this.classes + " font-sans"}>{this.isLatex ? <Latex>{textElement}</Latex> : textElement} </p>
                 }
                 else {
                     return <p key={index} className={this.classes}> {textElement} </p>
