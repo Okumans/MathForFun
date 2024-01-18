@@ -4,11 +4,13 @@ import { TopicBoxCreator } from "../../topicBox";
 import { realNumberContent } from "./pageRealNumber/contents";
 import { ContentBoxCreator } from "../../contentBox";
 import { setContents } from "./pageSet/contents";
+import { LogicContent } from "./pageLogic/contents";
 
 export const mergedContent = [
     ...sampleContents,
     ...realNumberContent,
-    ...setContents
+    ...setContents,
+    ...LogicContent
 ]
 
 const searcher = new Searcher([...mergedContent]);

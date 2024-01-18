@@ -10,6 +10,8 @@ import { ReferencePage } from './pages/referencePage'
 import { TagPage } from './pages/tagPage'
 import './index.css'
 import { PageSet } from './pages/content/pageSet/pageContentTemplate'
+import { PageLogic } from './pages/content/pageLogic/pageLogic'
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,13 @@ const router = createBrowserRouter([
     element: <>
       <Navbar />
       <PageSet />
+    </>
+  },
+  {
+    path: "/topics/logic",
+    element: <>
+      <Navbar />
+      <PageLogic />
     </>
   },
   {
