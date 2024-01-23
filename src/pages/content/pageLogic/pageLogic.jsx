@@ -62,8 +62,58 @@ export const PageLogic = () => {
               </div>
 
               <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("การดำเนินการทางตรรกศาสตร์"), true).content}
+                {makeExpand(findByTitle("สมบัตินิเสธ"), true).content}
               </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติการสลับที่ \"และ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติการสลับที่ \"หรือ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติการสลับที่ \"ก็ต่อเมื่อ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติการกระจาย \"และ\" ไป \"หรือ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติการกระจาย \"หรือ\" ไป \"และ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติ \"ถ้า...แล้ว...\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สมบัติ \"ก็ต่อเมื่อ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("การกระจายนิเสธ \"และ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("การกระจายนิเสธ \"หรือ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("การกระจายนิเสธ \"ก็ต่อเมื่อ\""), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("สัจจะนิรันดร์"), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("การอ้างเหตุผล"), true).content}
+              </div>
+
+
             </div>
           </div>
         </div>
