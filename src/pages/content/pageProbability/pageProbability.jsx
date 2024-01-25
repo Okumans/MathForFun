@@ -56,7 +56,6 @@ export const PageProbability = () => {
               
               <div className="w-full my-2 flex flex-col gap-1">
                 {makeExpand(findByTitle("หลักการบวก"), true).content}
-
                 <div className="w-full bg-white bg-opacity-10">
                   {
                     new ContentBoxCreator(
@@ -71,7 +70,6 @@ export const PageProbability = () => {
 
               <div className="w-full my-2 flex flex-col gap-1">
                 {makeExpand(findByTitle("หลักการคูณ"), true).content}
-
                 <div className="w-full bg-white bg-opacity-10">
                   {
                     new ContentBoxCreator(
@@ -86,7 +84,6 @@ export const PageProbability = () => {
 
               <div className="w-full my-2 flex flex-col gap-1">
                 {makeExpand(findByTitle("เรียงของที่แตกต่างกันทั้งหมด"), true).content}
-
                 <div className="w-full bg-white bg-opacity-10">
                   {
                     new ContentBoxCreator(
@@ -99,7 +96,56 @@ export const PageProbability = () => {
                 </div>
               </div>
 
-              
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("เลือกเรียงของที่แตกต่างกันทั้งหมด"), true).content}
+                <div className="w-full bg-white bg-opacity-10">
+                  {
+                    new ContentBoxCreator(
+                      [],
+                      new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
+                      undefined,
+                      new SpecialText("มีนักเรียน 5 คน ถูกเลือกออกมา 3 คน จะมีจำนวนวิธีที่เป็นไปได้ทั้งหมด $P_{n,r}$ = $\\frac{5!}{5-3}!$ = 60 วิธี", true)
+                    ).content
+                  }
+                </div>
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("เรียงของที่ไม่แตกต่างกันทั้งหมด"), true).content}
+                <div className="w-full bg-white bg-opacity-10">
+                  {
+                    new ContentBoxCreator(
+                      [],
+                      new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
+                      undefined,
+                      new SpecialText("A A A B B เรียงเป็นเส้นตรงได้ทั้งหมด $\\frac{5!}{3! \\cdot 2!}$ = 10 วิธี", true)
+                    ).content
+                  }
+                </div>
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("การจัดหมู่ของสิ่งของที่แตกต่างกันทั้งหมด"), true).content}
+                <div className="w-full bg-white bg-opacity-10">
+                  {
+                    new ContentBoxCreator(
+                      [],
+                      new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
+                      undefined,
+                      new SpecialText("มีนักเรียน 6 คน ต้องจัดกลุ่ม กลุ่มละ 3 คน มีวิธีจัดกลุ่มทั้งหมด $C_{6,3}$ = $\\binom{6}{3}$ = $\\frac{6!}{(6-3)!\\cdot3!}$ = 20 วิธี", true)
+                    ).content
+                  }
+                </div>
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("ทฤษฎีบททวินาม"), true).content}
+              </div>
+
+              <div className="w-full my-2 flex flex-col gap-1">
+                {makeExpand(findByTitle("ความน่าจะเป็น"), true).content}
+              </div>
+
             </div>
           </div>
         </div>
