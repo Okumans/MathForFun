@@ -4,7 +4,7 @@ import { findByTitle } from "../mergedContents";
 import { ContentBoxCreator, makeExpand } from "../../../contentBox";
 import { SpecialText } from "../../../specialText";
 
-export const pageProbability = () => {
+export const PageProbability = () => {
   const topic = "ความน่าจะเป็น"
 
   const boxAnimation = {
@@ -60,6 +60,7 @@ export const pageProbability = () => {
                 <div className="w-full bg-white bg-opacity-10">
                   {
                     new ContentBoxCreator(
+                      [],
                       new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
                       undefined,
                       new SpecialText("ถ้านาดีต้องการเดินทางจากบ้าน ไปโรงพยาบาล โดยมียานพาหนะ คือ รถยนต์ 3 คัน และเฮลิคอปเตอร์ 2 ลำ นาดีสามารถเดินทางไปที่โรงพยาบาล โดยใช้พาหนะอย่างเดียว ได้ 3 + 2 = 5 วิธี", true)
@@ -74,6 +75,7 @@ export const pageProbability = () => {
                 <div className="w-full bg-white bg-opacity-10">
                   {
                     new ContentBoxCreator(
+                      [],
                       new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
                       undefined,
                       new SpecialText("มีเสื้อ 3 ตัว กางเกง 2 ตัว และถุงเท้า 5 คู่ จะมีวิธีแต่งตัวทั้งหมด 3 x 2 x 5 = 30 วิธี", true)
@@ -88,6 +90,7 @@ export const pageProbability = () => {
                 <div className="w-full bg-white bg-opacity-10">
                   {
                     new ContentBoxCreator(
+                      [],
                       new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
                       undefined,
                       new SpecialText("มีหนังสือ 4 วิชาที่แตกต่างกัน วิชาละ 1 เล่ม ต้องการนำทั้ง 4 เล่มมาเรียงกันเป็นเส้นตรง ได้ 4! = 4 x 3 x 2 x 1 = 24 วิธี", true)
@@ -96,55 +99,7 @@ export const pageProbability = () => {
                 </div>
               </div>
 
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติการสลับที่ \"และ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติการสลับที่ \"หรือ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติการสลับที่ \"ก็ต่อเมื่อ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติการกระจาย \"และ\" ไป \"หรือ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติการกระจาย \"หรือ\" ไป \"และ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติ \"ถ้า...แล้ว...\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัติ \"ก็ต่อเมื่อ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("การกระจายนิเสธ \"และ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("การกระจายนิเสธ \"หรือ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("การกระจายนิเสธ \"ก็ต่อเมื่อ\""), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สัจจะนิรันดร์"), true).content}
-              </div>
-
-              <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("การอ้างเหตุผล"), true).content}
-              </div>
-
-
+              
             </div>
           </div>
         </div>

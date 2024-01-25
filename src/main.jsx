@@ -12,6 +12,7 @@ import './index.css'
 import { PageSet } from './pages/content/pageSet/pageContentTemplate'
 import { PageLogic } from './pages/content/pageLogic/pageLogic'
 import { PageComplex } from './pages/content/pageComplex/pageComplex'
+import { PageProbability } from './pages/content/pageProbability/pageProbability'
 
 
 const router = createBrowserRouter([
@@ -77,7 +78,14 @@ const router = createBrowserRouter([
       <Navbar />
       <PageComplex />
     </>
-  }
+  },
+  {
+    path: "/topics/probability",
+    element: <>
+      <Navbar />
+      <PageProbability />
+    </>
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

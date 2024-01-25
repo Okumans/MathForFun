@@ -6,17 +6,15 @@ import { ContentBoxCreator } from "../../contentBox";
 import { setContents } from "./pageSet/contents";
 import { LogicContent } from "./pageLogic/contents";
 import { ComplexContent } from "./pageComplex/contents";
+import { ProbabilityContent } from "./pageProbability/contents";
 
 export const mergedContent = [
     ...sampleContents,
     ...realNumberContent,
     ...setContents,
     ...LogicContent,
-<<<<<<< Updated upstream
-    ...ComplexContent
-=======
-
->>>>>>> Stashed changes
+    ...ComplexContent,
+    ...ProbabilityContent,
 ]
 
 const searcher = new Searcher([...mergedContent]);
