@@ -12,7 +12,11 @@ export const mergedContent = [
     ...realNumberContent,
     ...setContents,
     ...LogicContent,
+<<<<<<< Updated upstream
     ...ComplexContent
+=======
+
+>>>>>>> Stashed changes
 ]
 
 const searcher = new Searcher([...mergedContent]);

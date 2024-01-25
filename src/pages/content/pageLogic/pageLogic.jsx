@@ -52,8 +52,12 @@ export const PageLogic = () => {
         <div className="flex w-full justify-center">
           <div className="[text-shadow:0px_4px_4px_#00000040] w-11/12 md:w-5/6 lg:w-4/6 font-normal text-white">
             <div className="flex flex-col items-center gap-3">
+<<<<<<< Updated upstream
               <p className="w-full text-lg backdrop-blur-lg rounded-md">blah</p>
+=======
               <p className="w-full text-lg backdrop-blur-lg rounded-md">ตรรกศาสตร์คือเรื่องเกี่ยวกับการใช้เหตุผล, การพิสูจน์เรื่องต่าง ๆ โดยอาศัยหลักทางคณิตศาสตร์เข้ามาช่วย</p>
+              
+>>>>>>> Stashed changes
               <div className="w-full my-2 flex flex-col gap-1">
                 {makeExpand(findByTitle("ประพจน์"), true).content}
               </div>
@@ -107,7 +111,6 @@ export const PageLogic = () => {
               </div>
 
               <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สัจจะนิรันดร์"), true).content}
                 {makeExpand(findByTitle("สัจนิรันดร์"), true).content}
               </div>
 
