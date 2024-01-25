@@ -1,11 +1,11 @@
-import { LogicContent } from "./contents";
+import { ProbabilityContent } from "./contents";
 import { AnimatePresence, motion } from "framer-motion";
 import { findByTitle } from "../mergedContents";
 import { ContentBoxCreator, makeExpand } from "../../../contentBox";
 import { SpecialText } from "../../../specialText";
 
-export const PageLogic = () => {
-  const topic = "ตรรกศาสตร์"
+export const pageProbability = () => {
+  const topic = "ความน่าจะเป็น"
 
   const boxAnimation = {
     hidden: { scale: 0, opacity: 0, y: 50 },
@@ -52,18 +52,48 @@ export const PageLogic = () => {
         <div className="flex w-full justify-center">
           <div className="[text-shadow:0px_4px_4px_#00000040] w-11/12 md:w-5/6 lg:w-4/6 font-normal text-white">
             <div className="flex flex-col items-center gap-3">
-              <p className="w-full text-lg backdrop-blur-lg rounded-md">blah</p>
-              <p className="w-full text-lg backdrop-blur-lg rounded-md">ตรรกศาสตร์คือเรื่องเกี่ยวกับการใช้เหตุผล, การพิสูจน์เรื่องต่าง ๆ โดยอาศัยหลักทางคณิตศาสตร์เข้ามาช่วย</p>
+              <p className="w-full text-lg backdrop-blur-lg rounded-md">ความน่าจะเป็น คือการวัดหรือการประมาณความเป็นไปได้ว่า บางสิ่งบางอย่างจะเกิดขึ้น จะเป็นจริงมากเท่าใด ความน่าจะเป็นมีค่าตั้งแต่ 0 (โอกาส 0% หรือ จะไม่เกิดขึ้น) ไปจนถึง 1 (โอกาส 100% หรือ จะเกิดขึ้น)</p>
+              
               <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("ประพจน์"), true).content}
+                {makeExpand(findByTitle("หลักการบวก"), true).content}
+
+                <div className="w-full bg-white bg-opacity-10">
+                  {
+                    new ContentBoxCreator(
+                      new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
+                      undefined,
+                      new SpecialText("ถ้านาดีต้องการเดินทางจากบ้าน ไปโรงพยาบาล โดยมียานพาหนะ คือ รถยนต์ 3 คัน และเฮลิคอปเตอร์ 2 ลำ นาดีสามารถเดินทางไปที่โรงพยาบาล โดยใช้พาหนะอย่างเดียว ได้ 3 + 2 = 5 วิธี", true)
+                    ).content
+                  }
+                </div>
               </div>
 
               <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("การเชื่อมประพจน์ และตารางค่าความจริง"), true).content}
+                {makeExpand(findByTitle("หลักการคูณ"), true).content}
+
+                <div className="w-full bg-white bg-opacity-10">
+                  {
+                    new ContentBoxCreator(
+                      new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
+                      undefined,
+                      new SpecialText("มีเสื้อ 3 ตัว กางเกง 2 ตัว และถุงเท้า 5 คู่ จะมีวิธีแต่งตัวทั้งหมด 3 x 2 x 5 = 30 วิธี", true)
+                    ).content
+                  }
+                </div>
               </div>
 
               <div className="w-full my-2 flex flex-col gap-1">
-                {makeExpand(findByTitle("สมบัตินิเสธ"), true).content}
+                {makeExpand(findByTitle("เรียงของที่แตกต่างกันทั้งหมด"), true).content}
+
+                <div className="w-full bg-white bg-opacity-10">
+                  {
+                    new ContentBoxCreator(
+                      new SpecialText("ตัวอย่าง", false, "text-2xl opacity-80"),
+                      undefined,
+                      new SpecialText("มีหนังสือ 4 วิชาที่แตกต่างกัน วิชาละ 1 เล่ม ต้องการนำทั้ง 4 เล่มมาเรียงกันเป็นเส้นตรง ได้ 4! = 4 x 3 x 2 x 1 = 24 วิธี", true)
+                    ).content
+                  }
+                </div>
               </div>
 
               <div className="w-full my-2 flex flex-col gap-1">
@@ -108,7 +138,6 @@ export const PageLogic = () => {
 
               <div className="w-full my-2 flex flex-col gap-1">
                 {makeExpand(findByTitle("สัจจะนิรันดร์"), true).content}
-                {makeExpand(findByTitle("สัจนิรันดร์"), true).content}
               </div>
 
               <div className="w-full my-2 flex flex-col gap-1">
