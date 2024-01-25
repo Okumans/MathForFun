@@ -5,12 +5,14 @@ import { realNumberContent } from "./pageRealNumber/contents";
 import { ContentBoxCreator } from "../../contentBox";
 import { setContents } from "./pageSet/contents";
 import { LogicContent } from "./pageLogic/contents";
+import { ComplexContent } from "./pageComplex/contents";
 
 export const mergedContent = [
     ...sampleContents,
     ...realNumberContent,
     ...setContents,
-    ...LogicContent
+    ...LogicContent,
+    ...ComplexContent
 ]
 
 const searcher = new Searcher([...mergedContent]);

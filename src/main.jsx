@@ -11,7 +11,7 @@ import { TagPage } from './pages/tagPage'
 import './index.css'
 import { PageSet } from './pages/content/pageSet/pageContentTemplate'
 import { PageLogic } from './pages/content/pageLogic/pageLogic'
-
+import { PageComplex } from './pages/content/pageComplex/pageComplex'
 
 const router = createBrowserRouter([
   {
@@ -68,6 +68,13 @@ const router = createBrowserRouter([
     element: <>
       <Navbar />
       <TagPage />
+    </>
+  },
+  {
+    path: "/topics/complex-number",
+    element: <>
+      <Navbar />
+      <PageComplex />
     </>
   }
 ])

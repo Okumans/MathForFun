@@ -34,6 +34,7 @@ export const realNumberContent = [
     undefined,
     undefined,
     ["irrational number"],
-  )
+  ),ContentBoxCreator.fromObject({references:[{rawContent:"จำนวนจริง",isLatex:false,classes:""}],title:{rawContent:"ช่วงเปิดและช่วงปิด",isLatex:false,classes:""},description:{rawContent:"มีไว้เพื่อแสดงจำนวนจริงในรูปของช่วงบนเส้นจำนวน",isLatex:false,classes:""},equation:{rawContent:"$x\\epsilon \\left ( a,b \\right ]\\rightarrow a< x\\leq b$",isLatex:true,classes:""},definition:[[{rawContent:"( ) = ช่วงเปิด",isLatex:false,classes:""},{rawContent:"",isLatex:false,classes:""}],[{rawContent:"[] = ช่วงปิด",isLatex:false,classes:""},[{rawContent:"",isLatex:false,classes:""},{rawContent:"",isLatex:false,classes:""}]]]
+})
 
 ]

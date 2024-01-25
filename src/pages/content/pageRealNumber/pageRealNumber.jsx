@@ -123,6 +123,9 @@ export const PageRealNumber = () => {
               {makeExpand(findByTitle("สมบัติการเปลี่ยนกลุ่ม"), true).content}
               {makeExpand(findByTitle("สมบัติการมีเอกลักษณ์"), true).content}
 
+              <p className="w-full text-3xl font-semibold mt-4">การแสดงจำนวนจริงในรูปช่วง </p>
+              {makeExpand(findByTitle("ช่วงเปิดและช่วงปิด"), true).content}
+
             </div>
           </div>
         </div>
