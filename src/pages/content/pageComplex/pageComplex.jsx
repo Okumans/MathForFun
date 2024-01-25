@@ -51,13 +51,19 @@ export const PageComplex = () => {
                 <div className="flex w-full justify-center">
                   <div className="[text-shadow:0px_4px_4px_#00000040] w-11/12 md:w-5/6 lg:w-4/6 font-normal text-white">
                     <div className="flex flex-col items-center gap-1">
-                      <p className="w-full text-lg backdrop-blur-lg rounded-md">จำนวนที่ไม่ใช่จำนวนจริง</p>
+                      <p className="w-full text-3xl backdrop-blur-lg rounded-md">จำนวนที่ประกอบด้วยส่วนจริงและส่วยจินตภาพ</p>
                       <div className="w-full my-0.5 flex flex-col gap-1">
                         {makeExpand(findByTitle("การเขียนจำนวนเชิงซ้อน"), true).content}
                       </div>
 
                       <div className="w-full my-0.5 flex flex-col gap-1">
                         {makeExpand(findByTitle("การบวกลบจำนวนเชิงซ้อน"), true).content}
+                      </div>
+                      <div className="w-full my-0.5 flex flex-col gap-1">
+                        {makeExpand(findByTitle("การคูณจำนวนเชิงซ้อน"), true).content}
+                      </div>
+                      <div className="w-full my-0.5 flex flex-col gap-1">
+                        {makeExpand(findByTitle("การหารจำนวนเชิงซ้อน"), true).content}
                       </div>
                       <div className="w-full"> 
                         <p className="w-full text-2xl backdrop-blur-lg rounded-md">สัญลักษณ์และคำศัพท์ที่เกี่ยวข้อง</p>
@@ -68,7 +74,16 @@ export const PageComplex = () => {
                           {makeExpand(findByTitle("ขนาดของจำนวนเชิงซ้อน"), true).content}
                         </div>
                       </div>
-
+                      <p className="w-full text-2xl backdrop-blur-lg rounded-md">การเขียนจำนวนเชิงซ้อนในรูปชิงขั้ว(polar form)</p>
+                      <div className="w-full my-0.5 flex flex-col gap-1">
+                        {makeExpand(findByTitle("การเขียนจำนวนเชิงซ้อนในรูปเชิงขั้ว"), true).content}
+                      </div>
+                      <div className="w-full my-0.5 flex flex-col gap-1">
+                        {makeExpand(findByTitle("การคำนวณจำนวนเชิงซ้อนในรูปเชิงขั้ว"), true).content}
+                      </div>
+                      <div className="w-full my-0.5 flex flex-col gap-1">
+                        {makeExpand(findByTitle("Euler's formula"), true).content}
+                      </div>
                     </div>
                   </div>
                 </div>
