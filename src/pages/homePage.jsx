@@ -26,18 +26,18 @@ export const HomePage = () => {
     ["เซต", "set"],
     ["ตรรกศาสตร์", "logic"],
     ["จำนวนจริง", "real-number"],
-    ["ฟังก์ชั่น", "function"],
-    ["ภาคตัดกรวย", "conic-section"],
-    ["เรขาคณิตวิเคราะห์", "analytic-geometry"],
+    //["ฟังก์ชั่น", "function"],
+    //["ภาคตัดกรวย", "conic-section"],
+    //["เรขาคณิตวิเคราะห์", "analytic-geometry"],
     ["expo&log", "exponential-logarithm"],
-    ["เมทริกซ์", "matrix"],
-    ["ตรีโกณมิติ", "trigonometry"],
-    ["เวกเตอร์", "vector"],
+    //["เมทริกซ์", "matrix"],
+    //["ตรีโกณมิติ", "trigonometry"],
+    //["เวกเตอร์", "vector"],
     ["จำนวนเชิงซ้อน", "complex-number"],
-    ["ลำดับและอนุกรม", "sequence-series"],
+    //["ลำดับและอนุกรม", "sequence-series"],
     ["ความน่าจะเป็น", "probability"],
-    ["แคลคูลัส", "calculus"],
-    ["สถิติ", "statistics"],
+    //["แคลคูลัส", "calculus"],
+    //["สถิติ", "statistics"],
     // ["พีชคณิต", "Algebra"]
   ];
 
@@ -140,7 +140,7 @@ export const HomePage = () => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center mb-1 mt-2">
+        <div className="w-full flex justify-center mb-3 mt-2">
           <hr className="w-4/6 border-y-2 opacity-60"></hr>
         </div>
         <div className="flex w-full justify-center">
@@ -148,7 +148,7 @@ export const HomePage = () => {
             <AnimatePresence layout mode={"popLayout"}>
               {searchText.length == 0
                 ?
-                <motion.div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 w-full"
+                <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-4 w-full"
                   variants={containerAnimationItems}
                   animate="show"
                   initial="hidden"

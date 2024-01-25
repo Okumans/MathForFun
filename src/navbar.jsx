@@ -48,18 +48,18 @@ const Dropdown = () => {
                         <Item text="เซต" link="set"/>
                         <Item text="ตรรกศาสตร์" link="logic"/>
                         <Item text="จำนวนจริง" link="real-number"/>
-                        <Item text="ฟังก์ชั่น" link="function"/>
+                        {/* <Item text="ฟังก์ชั่น" link="function"/>
                         <Item text="ภาคตัดกรวย" link="conic-section"/>
-                        <Item text="เรขาคณิต" link="analytic-geometry"/>
+                        <Item text="เรขาคณิต" link="analytic-geometry"/> */}
                         <Item text="expo&log" link="exponential-logarithm"/>
-                        <Item text="เมทริกซ์" link="matrix"/>
+                        {/* <Item text="เมทริกซ์" link="matrix"/>
                         <Item text="ตรีโกณมิติ" link="trigonometry"/>
-                        <Item text="เวกเตอร์" link="vector"/>
+                        <Item text="เวกเตอร์" link="vector"/> */}
                         <Item text="จำนวนเชิงซ้อน" link="complex-number"/>
-                        <Item text="ลำดับและอนุกรม" link="sequence-series"/>
+                        {/* <Item text="ลำดับและอนุกรม" link="sequence-series"/> */}
                         <Item text="ความน่าจะเป็น" link="probability"/>
-                        <Item text="แคลคูลัส" link="calculus"/>
-                        <Item text="สถิติ" link="statistics"/>
+                        {/* <Item text="แคลคูลัส" link="calculus"/>
+                        <Item text="สถิติ" link="statistics"/> */}
                     </div>
                 </Menu.Items>
             </Transition>
