@@ -9,7 +9,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
     const [contentLock, setContentLock] = useState(false);
     const navigate = useNavigate();
 
-    return <div className="flex w-full h-fit justify-center bg-white bg-opacity-30 rounded-lg shadow-md backdrop-blur-sm ">
+    return <div className="flex w-full h-fit justify-center bg-white bg-opacity-25 rounded-lg shadow-md backdrop-blur-sm ">
         <div className="flex flex-col p-3 w-full gap-2">
 
             {/* lock button */}
@@ -85,9 +85,9 @@ export const ContentBox = ({ references, title, description, equation, table, de
                         }
 
                         {/* table or equation */}
-                        <div className={"flex gap-1 flex-col md:flex-col lg:" + (long_content ? "flex-col" : "flex-row")}>
+                        <div className={`flex gap-1 flex-col md:${(long_content ? "flex-col" : "flex-row")} lg:${(long_content ? "flex-col" : "flex-row")}`}>
 
-
+                        {console.log(long_content)}
                             {equation ?
                                 <div className="p-4 flex items-center min-w-fit text-white text-xl md:text-2xl bg-white bg-opacity-20 rounded-lg shadow-md flex-grow">
                                     <div className="w-full text-center">{equation?.contentNoStyle}</div>
@@ -124,17 +124,17 @@ export const ContentBox = ({ references, title, description, equation, table, de
 const TableGenerator = ({ info }) => {
     const [headers, contents] = info;
 
-    return <table className="border-2 border-white border-solid w-full ">
-        <thead>
+    return <table className="border-separate border-spacing-x-1.5 border-spacing-y-0 rounded-md w-full shadow-sm">
+        <thead className=''>
             <tr>
-                {headers.map((header, index) => <th key={index} className="border-2 bg-white bg-opacity-20 border-white border-solid p-2">{header.content}</th>)}
+                {headers.map((header, index) => <th key={index} className=" bg-white bg-opacity-25 rounded-t-md p-2 shadow-sm">{header.content}</th>)}
             </tr>
         </thead>
 
         <tbody>
             {contents.map((row, index) =>
-                <tr key={index} className="border-2 break-all border-white border-solid">{row.map((col, indexx) =>
-                    <td key={indexx} className="border-2 py-3 text-sm sm:text-lg md:text-xl lg:text-2xl border-white border-solid px-3">
+                <tr key={index} className="break-all ">{row.map((col, indexx) =>
+                    <td key={indexx} className="bg-white bg-opacity-10 rounded-sm py-3 text-sm sm:text-lg md:text-xl lg:text-xl  px-3">
                         <div>
                             {col.content}
                         </div>
