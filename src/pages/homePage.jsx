@@ -148,7 +148,7 @@ export const HomePage = () => {
             <AnimatePresence layout mode={"popLayout"}>
               {searchText.length == 0
                 ?
-                <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-4 w-full"
+                <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-3 w-full"
                   variants={containerAnimationItems}
                   animate="show"
                   initial="hidden"

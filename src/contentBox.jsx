@@ -4,7 +4,7 @@ import { FaLock, FaUnlock } from "react-icons/fa";
 import { SpecialText } from './specialText';
 import { useNavigate } from 'react-router-dom';
 
-export const ContentBox = ({ references, title, description, equation, table, definition, image, video, defualtHeight }) => {
+export const ContentBox = ({ references, title, description, equation, table, definition, image, video, defualtHeight, long_content }) => {
     const [height, setHeight] = useState(defualtHeight || 0);
     const [contentLock, setContentLock] = useState(false);
     const navigate = useNavigate();
@@ -85,7 +85,7 @@ export const ContentBox = ({ references, title, description, equation, table, de
                         }
 
                         {/* table or equation */}
-                        <div className="flex gap-1 flex-col md:flex-col lg:flex-row">
+                        <div className={"flex gap-1 flex-col md:flex-col lg:" + (long_content ? "flex-col" : "flex-row")}>
 
 
                             {equation ?
@@ -166,7 +166,8 @@ export class ContentBoxCreator {
         image = undefined,
         video = undefined,
         keywords = undefined,
-        defualtHeight = undefined
+        defualtHeight = undefined,
+        longContent = undefined
     ) {
         this.references = references;
         this.title = title;
@@ -178,6 +179,7 @@ export class ContentBoxCreator {
         this.video = video
         this.keywords = keywords;
         this.defualtHeight = defualtHeight ? "auto" : 0;
+        this.longContent = longContent === undefined ? false : longContent
 
         // change normal string to SpecialText if need **all text use below is all SpecialText for latex support 
         if (this.references) SpecialText.recursiveNestToSpecialText(this.references);
@@ -199,6 +201,7 @@ export class ContentBoxCreator {
             image={this.image}
             video={this.video}
             defualtHeight={this.defualtHeight}
+            long_content={this.longContent}
         />
     }
 
@@ -214,6 +217,7 @@ export class ContentBoxCreator {
             image={this.image}
             video={this.video}
             defualtHeight={this.defualtHeight}
+            long_content={this.longContent}
         />
     }
 
@@ -228,6 +232,7 @@ export class ContentBoxCreator {
             image: this.image,
             video: this.video,
             defualtHeight: this.defualtHeight,
+            longContent: this.longContent
         }
     }
 
@@ -241,7 +246,8 @@ export class ContentBoxCreator {
             image,
             video,
             keywords,
-            defualtHeight } = dict
+            defualtHeight,
+            longContent } = dict
 
         return new ContentBoxCreator(
             references,
@@ -253,10 +259,11 @@ export class ContentBoxCreator {
             image,
             video,
             keywords,
-            defualtHeight)
+            defualtHeight,
+            longContent)
     }
 }
 
 export const makeExpand = (content, expanded) => {
-    return ContentBoxCreator.fromObject({...content.toObject(), defualtHeight: expanded});
+    return ContentBoxCreator.fromObject({ ...content.toObject(), defualtHeight: expanded });
 }
