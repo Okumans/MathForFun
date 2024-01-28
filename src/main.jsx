@@ -13,6 +13,7 @@ import { PageSet } from './pages/content/pageSet/pageSet'
 import { PageLogic } from './pages/content/pageLogic/pageLogic'
 import { PageComplex } from './pages/content/pageComplex/pageComplex'
 import { PageProbability } from './pages/content/pageProbability/pageProbability'
+import { PageExpo } from './pages/content/pageExpo/pageExpo'
 
 
 const router = createBrowserRouter([
@@ -84,6 +85,13 @@ const router = createBrowserRouter([
     element: <>
       <Navbar />
       <PageProbability />
+    </>
+  },
+  {
+    path: "/topics/exponential-logarithm",
+    element: <>
+      <Navbar />
+      <PageExpo />
     </>
   },
 ])
