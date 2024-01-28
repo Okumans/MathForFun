@@ -4,7 +4,7 @@ export const ReferencePage = () => {
       <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-3 ">
         <div className="my-10 md:my-16"/>
 
-        <div className="flex shadow-md">
+        <div className="flex shadow-md justify-center">
 
           <img id="opink" className="flex w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/Opink.png"></img>
 
@@ -21,7 +21,7 @@ export const ReferencePage = () => {
           </div> */}
         </div>
         
-        <div className="flex my-5 shadow-md">
+        <div className="flex my-5 shadow-md justify-center">
 
           <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/kpbo.jpg"></img>
 
@@ -38,7 +38,7 @@ export const ReferencePage = () => {
           </div> */}
         </div>
 
-        <div className="flex my-5 shadow-md">
+        <div className="flex my-5 shadow-md justify-center">
 
           <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/beam.jpg"></img>
 
@@ -55,7 +55,7 @@ export const ReferencePage = () => {
           </div> */}
         </div>
         
-        <div className="flex my-5 shadow-md">
+        <div className="flex my-5 shadow-md justify-center">
 
           <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/Patty.jpg"></img>
 
