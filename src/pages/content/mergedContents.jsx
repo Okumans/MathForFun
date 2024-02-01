@@ -6,6 +6,7 @@ import { setContents } from "./pageSet/contents";
 import { LogicContent } from "./pageLogic/contents";
 import { ComplexContent } from "./pageComplex/contents";
 import { ProbabilityContent } from "./pageProbability/contents";
+import { ExpoContent } from "./pageExpo/contents";
 
 export const mergedContent = [
     ...realNumberContent,
@@ -13,6 +14,7 @@ export const mergedContent = [
     ...LogicContent,
     ...ComplexContent,
     ...ProbabilityContent,
+    ...ExpoContent
 ]
 
 const searcher = new Searcher([...mergedContent]);
