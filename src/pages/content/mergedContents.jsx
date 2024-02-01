@@ -1,4 +1,3 @@
-import { sampleContents } from "./pageContentTemplate/contents";
 import { Searcher } from "../../searcher";
 import { TopicBoxCreator } from "../../topicBox";
 import { realNumberContent } from "./pageRealNumber/contents";
@@ -9,7 +8,6 @@ import { ComplexContent } from "./pageComplex/contents";
 import { ProbabilityContent } from "./pageProbability/contents";
 
 export const mergedContent = [
-    ...sampleContents,
     ...realNumberContent,
     ...setContents,
     ...LogicContent,
