@@ -41,7 +41,7 @@ export const PageExpo = () => {
   
     return (
       <div className="flex flex-row justify-center min-h-screen overflow-clip">
-        <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-cover justify-center gap-5">
+        <div className="flex flex-col w-full bg-[url('/bg.jpg')] bg-fixed bg-cover justify-center gap-5">
   
           <div className="my-10 md:my-15 border-4" />
   

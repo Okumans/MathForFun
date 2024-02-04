@@ -1,12 +1,12 @@
 export const ReferencePage = () => {
   return (
     <div className="flex flex-row justify-center min-h-screen" >
-      <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-3 ">
+      <div className="flex flex-col w-full bg-[url('/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-3 ">
         <div className="my-10 md:my-16"/>
 
         <div className="flex shadow-md justify-center">
 
-          <img id="opink" className="flex w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/Opink.png"></img>
+          <img id="opink" className="flex w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="/Opink.png"></img>
 
           <div className="flex w-2/3 md:w-1/2 lg:w-2/5 flex-col ">
             <div className="flex justify-center bg-white bg-opacity-50 shadow-md rounded-tr backdrop-blur-sm max-w-6xl p-3 w-11/12 md:w-5/6 lg:w-10/11">
@@ -23,7 +23,7 @@ export const ReferencePage = () => {
         
         <div className="flex my-5 shadow-md justify-center">
 
-          <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/kpbo.jpg"></img>
+          <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="/kpbo.jpg"></img>
 
           <div className="flex w-2/3 md:w-1/2 lg:w-2/5 flex-col ">
             <div className="flex justify-center bg-white bg-opacity-50 shadow-md rounded-tr backdrop-blur-sm max-w-6xl p-3 w-11/12 md:w-5/6 lg:w-10/11">
@@ -40,7 +40,7 @@ export const ReferencePage = () => {
 
         <div className="flex my-5 shadow-md justify-center">
 
-          <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/beam.jpg"></img>
+          <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="/beam.jpg"></img>
 
           <div className="flex w-2/3 md:w-1/2 lg:w-2/5 flex-col ">
             <div className="flex justify-center bg-white bg-opacity-50 shadow-md rounded-tr backdrop-blur-sm max-w-6xl p-3 w-11/12 md:w-5/6 lg:w-10/11">
@@ -57,7 +57,7 @@ export const ReferencePage = () => {
         
         <div className="flex my-5 shadow-md justify-center">
 
-          <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="src/assets/Patty.jpg"></img>
+          <img className="flex object-cover w-2/3 md:w-1/2 lg:w-1/5 ml-20" src="/Patty.jpg"></img>
 
           <div className="flex w-2/3 md:w-1/2 lg:w-2/5 flex-col ">
             <div className="flex justify-center bg-white bg-opacity-50 shadow-md rounded-tr backdrop-blur-sm max-w-6xl p-3 w-11/12 md:w-5/6 lg:w-10/11">

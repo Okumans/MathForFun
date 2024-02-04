@@ -45,7 +45,7 @@ export const TagPage = () => {
 
     return (
         <div className="flex flex-row justify-center min-h-screen overflow-clip">
-            <div className="flex flex-col w-full bg-[url('../src/assets/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-3 ">
+            <div className="flex flex-col w-full bg-[url('/bg.jpg')] bg-fixed bg-no-repeat bg-cover gap-3 ">
                 <div className="my-10 md:my-16" />
                 <p className="text-white [text-shadow:0px_4px_4px_#00000040] font-bold text-4xl md:text-6xl lg:text-7xl text-center tracking-[0] leading-[normal]">
                     {tag}
